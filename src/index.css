@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Regular";
+  src: local("Sora-Regular"),
+    url("./assets/fonts/Sora-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Medium";
+  src: local("Sora-Medium"),
+    url("./assets/fonts/Sora-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Italic";
+  src: local("Sora-Italic"),
+    url("./assets/fonts/Sora-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Light";
+  src: local("Sora-Light"),
+    url("./assets/fonts/Sora-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SemiBold";
+  src: local("Sora-SemiBold"),
+    url("./assets/fonts/Sora-SemiBold.ttf") format("truetype");
+}
+.swiper {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.swiper-slide {
+  margin-bottom: 15px !important;
+  display: block;
+  height: auto !important;
+  min-height: 200px;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.swiper-slide img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+@media (max-width: 1280px) {
+  .AnimatedGallery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swiper-slide {
+    margin: 10px !important; /* Görseller arasındaki boşluğu artır */
+    padding: 0 !important; /* Boşlukları sıfırla */
+    width: auto !important; /* Slayt genişliğini düzenle */
+  }
+
+  .swiper-slide img {
+    display: block;
+    margin: 0 auto; /* Görselin hizasını düzenle */
+    width: 135px; /* Görselin genişliğini 135px yap */
+    height: 215px; /* Görselin yüksekliğini 215px yap */
+    border-radius: 10px; /* Görsele yuvarlatılmış kenar ekle */
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1600px) {
+  .translate-x-40 {
+    transform: translateX(5rem);
+  }
+  .-translate-y-32 {
+    transform: translateY(-8rem);
+  }
+}
+
+/* styles.css */
+.image-section .swiper {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.image-section .swiper-slide {
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+  width: auto !important;
+  height: 700px !important;
+  margin-right: 16px !important;
+}
+
+@media (min-width: 1280px) and (max-width: 1600px) {
+  .image-section .swiper-slide {
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+    width: auto !important;
+    height: 500px !important;
+    margin-right: 16px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .image-section .swiper-slide {
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+    width: auto !important;
+    height: 400px !important;
+    margin-right: 16px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .image-section .swiper-slide {
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+    width: auto !important;
+    height: 400px !important;
+    margin-right: 16px !important;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 640px) {
+  .image-section .swiper-slide {
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+    width: auto !important;
+    height: 350px !important;
+    margin-right: 16px !important;
+  }
+}
+
+.image-section .swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+.image-section img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+
+

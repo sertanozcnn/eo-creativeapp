@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77">
+  <g id="PricingDetails" transform="translate(-3 -3)">
+    <path id="Path_136" data-name="Path 136" d="M4,65.529h9.368a2.676,2.676,0,0,0,2.676-2.676V14.676A2.676,2.676,0,0,0,13.368,12H4" transform="translate(0 2.706)" fill="none" stroke="#dbdbdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_137" data-name="Path 137" d="M63.044,12H53.676A2.676,2.676,0,0,0,51,14.676V62.853a2.676,2.676,0,0,0,2.676,2.676h9.368" transform="translate(15.897 2.706)" fill="none" stroke="#dbdbdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectangle_125" data-name="Rectangle 125" width="75" height="75" rx="8" transform="translate(4 4)" fill="none" stroke="#dbdbdb" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_138" data-name="Path 138" d="M52.794,12H20.676A2.676,2.676,0,0,0,18,14.676V62.853a2.676,2.676,0,0,0,2.676,2.676H52.794a2.676,2.676,0,0,0,2.676-2.676V14.676A2.676,2.676,0,0,0,52.794,12Z" transform="translate(4.735 2.706)" fill="none" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_139" data-name="Path 139" d="M44.75,41H26.015a4.015,4.015,0,1,0,0,8.029H44.75a4.015,4.015,0,1,0,0-8.029Z" transform="translate(6.088 12.515)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_140" data-name="Path 140" d="M23,18H47.088" transform="translate(6.426 4.735)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_141" data-name="Path 141" d="M23,28H47.088" transform="translate(6.426 8.118)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_142" data-name="Path 142" d="M23,23H47.088" transform="translate(6.426 6.426)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_143" data-name="Path 143" d="M23,33H33.324" transform="translate(6.426 9.809)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>
