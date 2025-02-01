@@ -6,13 +6,13 @@ const TeamMeetImage = () => {
         <img
           src="https://i.hizliresim.com/rkvmm9g.jpg"
           alt="Expert Team"
-          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[75%]"
+          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[75%] "
         />
         <div className="p-6">
           <h4 className="text-white text-xl font-primaryRegular">
             Size özel uzman ekibimiz
           </h4>
-          <p className="text-gray-100 font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
+          <p className="text-gray-100 font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-500 ease-in-out">
             Projelerinizi taleplerini önceden birlikte belirlediğimiz zaman
             planına göre size iletiyoruz. Revizyonlarınıza kısa sürede dönüş
             yapıyoruz.
@@ -31,7 +31,7 @@ const TeamMeetImage = () => {
           <h4 className="text-xl font-primaryRegular text-black">
             Hızlı teslim süreleri
           </h4>
-          <p className="text-bgHeaderColor font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
+          <p className="text-bgHeaderColor font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-500 ease-in-out">
             Projelerinizi taleplerini önceden birlikte belirlediğimiz zaman
             planına göre size iletiyoruz. Revizyonlarınıza kısa sürede dönüş
             yapıyoruz.
@@ -50,7 +50,7 @@ const TeamMeetImage = () => {
           <h4 className="text-xl font-primaryRegular text-black">
             Esnek abonelik modeli
           </h4>
-          <p className="text-black font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
+          <p className="text-black font-primaryLight mt-2 text-sm transform opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-500 ease-in-out">
             Projelerinizi taleplerini önceden birlikte belirlediğimiz zaman
             planına göre size iletiyoruz. Revizyonlarınıza kısa sürede dönüş
             yapıyoruz.

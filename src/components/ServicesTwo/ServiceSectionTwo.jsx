@@ -133,8 +133,6 @@ const ServiceSection = ({ activeTab, activeCard }) => {
               scale: activeCard === card.id ? 1.03 : 1,
               zIndex: activeCard === card.id ? 10 : 1,
             }}
-            whileHover={{ scale: 1.02 }}
-            onClick={() => setActiveCard(card.id)}
             transition={{ duration: 0.3 }}
           >
             {card.id === "size-ozel" ? (
@@ -313,10 +311,10 @@ const ServiceSection = ({ activeTab, activeCard }) => {
       </div>
 
       {/* Questions Section */}
-      <div className="mt-8 p-6 bg-gray-100 rounded-xl flex justify-between items-center">
+      <div className="mt-8 p-6 bg-gray-100 rounded-xl flex flex-col md:flex-row justify-between items-center">
         <p className="text-xl font-primarySemiBold">Sorularınız mı var?</p>
         <motion.button
-          className="flex items-center text-sm px-6 py-3 bg-black text-white rounded-lg font-primaryRegular"
+          className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

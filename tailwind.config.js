@@ -11,7 +11,7 @@ export default {
         bgNeedGray: "#5E5E5E",
         bgBorderGray: "#AEAEAE",
         bgQuestionBackgroundColor: "#FAFAFA",
-
+        eoLogoBackgroundColor: "#9D9F98",
         bgTeamMeetOneBackground: "#013F4D",
         bgTeamMeetTwoBackground: "#F3F3F3",
         bgTeamMeetThreeBackground: "#FFD43B",

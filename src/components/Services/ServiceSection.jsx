@@ -346,10 +346,10 @@ const ServiceSection = () => {
       </div>
 
       {/* Questions Section */}
-      <div className="mt-8 p-6 bg-gray-100 rounded-xl flex justify-between items-center">
+      <div className="mt-8 p-6 bg-gray-100 rounded-xl flex justify-between items-center flex-col md:flex-row">
         <p className="text-xl font-primarySemiBold">Sorularınız mı var?</p>
         <motion.button
-          className="flex items-center text-sm px-6 py-3 bg-black text-white rounded-lg font-primaryRegular"
+          className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

@@ -5,7 +5,13 @@
 @font-face {
   font-family: "Regular";
   src: local("Sora-Regular"),
-    url("./assets/fonts/Sora-Regular.ttf") format("truetype");
+    url("/assets/fonts/Sora-Regular.ttf") format("truetype");
+}
+
+.navbar-background {
+  background-image: url("https://res.cloudinary.com/dvrjjdmbn/image/upload/v1738412728/9ecabb8e836148ea76abfba740bf7267e65e8f11-3840x1432-image_gkxhxu.png");
+  background-size: cover;
+  background-position: center;
 }
 
 @font-face {
@@ -24,6 +30,12 @@
   font-family: "Light";
   src: local("Sora-Light"),
     url("./assets/fonts/Sora-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Bold";
+  src: local("Sora-Bold"),
+    url("./assets/fonts/Sora-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -147,6 +159,3 @@
   height: 100%;
   border-radius: 12px;
 }
-
-
-
