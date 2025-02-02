@@ -7,6 +7,15 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  /*server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5173", // API'nin bulunduğu sunucu adresi
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },*/
 
   plugins: [react(), svgr()],
 });

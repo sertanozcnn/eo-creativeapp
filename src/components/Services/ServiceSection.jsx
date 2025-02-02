@@ -91,9 +91,10 @@ const ServiceSection = () => {
   ];
 
   useEffect(() => {
-    (async function () {
+    const loadCalApi = async () => {
       try {
         const cal = await getCalApi({ namespace: "30dk" });
+        console.log(cal); // Check if the calendar API is loaded
         if (!cal) {
           console.error("getCalApi başarısız oldu!");
           return;
@@ -111,7 +112,9 @@ const ServiceSection = () => {
       } catch (error) {
         console.error("Cal API yüklenirken hata oluştu:", error);
       }
-    })();
+    };
+
+    loadCalApi();
   }, []);
 
   return (
@@ -372,18 +375,25 @@ const ServiceSection = () => {
       <div className="mt-8 p-6 bg-gray-100 rounded-xl flex justify-between items-center flex-col md:flex-row">
         <p className="text-xl font-primarySemiBold">Sorularınız mı var?</p>
         <motion.button
+          data-cal-namespace="30dk"
+          data-cal-link="eocreative/30dk"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
           className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => {
-            if (window.Cal) {
-              window.Cal?.("ui", "open", {
-                namespace: "30dk",
+          onClick={async () => {
+            try {
+              const cal = await getCalApi({ namespace: "30dk" });
+              if (!cal) {
+                console.error("getCalApi başarısız oldu!");
+                return;
+              }
+              cal("ui", "open", {
                 calLink: "eocreative/30dk",
                 config: { layout: "month_view", theme: "light" },
               });
-            } else {
-              console.error("Cal API yüklenmedi!");
+            } catch (error) {
+              console.error("Cal API yüklenirken hata oluştu:", error);
             }
           }}
         >

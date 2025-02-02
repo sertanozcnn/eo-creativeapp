@@ -6,6 +6,7 @@ const TeamMember = ({
   rotate = "rotate-3",
   marginTop = "mt-4",
   isFirst = false,
+  link,
 }) => {
   return (
     <div
@@ -26,7 +27,10 @@ const TeamMember = ({
       <div
         className={`relative rounded-2xl overflow-hidden transform ${rotate}`}
       >
-        <img src={imageUrl} alt={name} className="w-48 h-64 object-cover" />
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {/* Linki buraya ekledik */}
+          <img src={imageUrl} alt={name} className="w-48 h-64 object-cover" />
+        </a>
       </div>
 
       <div className={`mt-4 text-center transform ${rotate}`}>
@@ -38,7 +42,7 @@ const TeamMember = ({
           {name}
         </h3>
         <p
-          className={`text-sm text-gray-400 text-center ${
+          className={`text-base text-bgTeamTextColor text-center ${
             isFirst ? "-mt-1 ml-5" : "-mt-1 mr-4"
           }`}
         >

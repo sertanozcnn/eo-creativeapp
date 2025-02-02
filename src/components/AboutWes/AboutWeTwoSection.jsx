@@ -35,8 +35,9 @@ const TeamMembers = () => (
     <TeamMember
       name="Ercan Özcan"
       role="Kurucu Ortak , CEO"
-      imageUrl="https://i.hizliresim.com/1nich0i.jpg"
+      imageUrl="https://i.hizliresim.com/61s1hxy.jpg"
       rotate="-rotate-6"
+      link="https://www.linkedin.com/in/ercanozcanim/"
       isFirst={true} // Pass isFirst prop to the first TeamMember
     />
     <TeamMember
@@ -46,6 +47,7 @@ const TeamMembers = () => (
       rotate="rotate-3"
       marginTop="mt-12"
       className="-ml-6" // Apply negative left margin to the second element
+      link="https://www.linkedin.com/in/sertanozcnn/"
     />
   </div>
 );
