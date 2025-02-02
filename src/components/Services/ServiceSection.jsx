@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCalApi } from "@calcom/embed-react";
 
 const ServiceSection = () => {
   const [activeCard, setActiveCard] = useState("pro");
@@ -88,6 +89,30 @@ const ServiceSection = () => {
         "Size nasıl yardımcı olabileceğimiz hakkında daha fazla bilgi edinin.",
     },
   ];
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const cal = await getCalApi({ namespace: "30dk" });
+        if (!cal) {
+          console.error("getCalApi başarısız oldu!");
+          return;
+        }
+        cal("ui", {
+          theme: "light",
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#292929" },
+            dark: { "cal-brand": "#fafafa" },
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+        console.log("Cal API başarıyla yüklendi!");
+      } catch (error) {
+        console.error("Cal API yüklenirken hata oluştu:", error);
+      }
+    })();
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-[85rem]">
@@ -350,6 +375,17 @@ const ServiceSection = () => {
           className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          onClick={() => {
+            if (window.Cal) {
+              window.Cal?.("ui", "open", {
+                namespace: "30dk",
+                calLink: "eocreative/30dk",
+                config: { layout: "month_view", theme: "light" },
+              });
+            } else {
+              console.error("Cal API yüklenmedi!");
+            }
+          }}
         >
           BİR ARAMA PLANLAYIN
           <svg
