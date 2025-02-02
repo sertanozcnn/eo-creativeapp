@@ -20,7 +20,7 @@ const NeedSection = () => {
   ];
 
   return (
-    <div className="container mx-auto xl:px-4 lg:px-5 md:px-10 px-6 max-w-[85rem] mt-8 mb-32">
+    <div className="container mx-auto xl:px-4 lg:px-5 md:px-10 px-6 max-w-[85rem] mt-8 mb-16">
       <div className="grid md:grid-cols-2 gap-6">
         {cards.map((card, index) => (
           <motion.div
@@ -30,7 +30,7 @@ const NeedSection = () => {
             whileHover={{
               transition: { duration: 0.3 },
             }}
-            className="bg-white rounded-2xl p-8 border border-bgBorderGray hover:shadow-lg transition-all hover:border-none duration-500 group"
+            className="bg-white rounded-2xl p-8 border border-bgBorderGray hover:shadow-lg transition-all  duration-500 group"
           >
             <div className="space-y-6">
               <div className="w-20 h-20 rounded-2xl flex items-center justify-start">

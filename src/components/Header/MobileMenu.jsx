@@ -9,7 +9,7 @@ const MobileMenu = ({ isOpen, setIsOpen, isScrolled }) => (
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 1.5 }}
-      className="xl:hidden text-2xl z-50 ml-auto mr-2"
+      className="xl:hidden text-2xl z-50 mt-1 ml-auto mr-2"
       onClick={() => setIsOpen(!isOpen)}
     >
       <HiOutlineMenu className={isScrolled ? "text-black" : "text-white"} />
@@ -24,7 +24,7 @@ const MobileMenu = ({ isOpen, setIsOpen, isScrolled }) => (
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 1.5 }}
-          className="absolute top-6 right-6 text-white text-3xl z-50"
+          className="absolute top-8 right-6 text-white text-3xl z-50"
           onClick={() => setIsOpen(false)}
         >
           <IoClose />

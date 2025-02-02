@@ -5,9 +5,9 @@ const Logo = ({ isScrolled }) => (
 
     <a href="/">
       <img
-        src="/logo.svg"
+        src="/white_logo.svg"
         alt="Logo 1"
-        className={`absolute inset-0 h-14 w-auto transition-opacity duration-500 ${
+        className={`absolute inset-0 h-13  w-auto transition-opacity duration-500 ${
           isScrolled ? "opacity-0" : "opacity-100"
         }`}
       />
@@ -15,9 +15,9 @@ const Logo = ({ isScrolled }) => (
     {/* Logo 2 (Scroll Edildiğinde Gözükecek Logo) */}
     <a href="/">
       <img
-        src="/logo2.svg"
+        src="/black_logo.svg"
         alt="Logo 2"
-        className={`absolute inset-0 h-14 w-auto transition-opacity duration-500 ${
+        className={`absolute inset-0 h-13 w-auto transition-opacity duration-500 ${
           isScrolled ? "opacity-100" : "opacity-0"
         }`}
       />

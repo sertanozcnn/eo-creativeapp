@@ -125,7 +125,7 @@ const ServiceSection = ({ activeTab, activeCard }) => {
                 : card.id === "size-ozel"
                 ? "bg-gray-100"
                 : "bg-bgHeaderButtonPrimary"
-            }  cursor-pointer relative flex justify-between flex-col ${
+            }   relative flex justify-between flex-col ${
               card.id === "size-ozel" ? "" : ""
             }`}
             initial={{ scale: 1 }}

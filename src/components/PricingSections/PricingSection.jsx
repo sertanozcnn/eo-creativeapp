@@ -14,7 +14,7 @@ const PricingSection = () => {
   return (
     <div>
       <div className="max-w-[84rem] mx-auto px-8 sm:px-12 md:px-20 lg:px-32 xl:px-1 flex flex-col md:flex-row justify-between items-center pt-24 text-center md:text-left">
-        <div className="text-4xl sm:text-6xl md:text-5xl -mt-5 font-primaryLight ">
+        <div className="text-4xl sm:text-6xl md:text-5xl -mt-12 font-primaryLight ">
           <h1 className="leading-[1.2]">
             Tasarım ihtiyaçlarınız <br className="hidden md:block" /> için basit
             ve şeffaf <br className="hidden md:block" /> fiyatlandırma

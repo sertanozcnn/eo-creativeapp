@@ -158,7 +158,7 @@ const ServiceSection = () => {
                 : card.id === "size-ozel"
                 ? "bg-gray-100"
                 : "bg-bgHeaderButtonPrimary"
-            }  cursor-pointer relative flex justify-between flex-col ${
+            }   relative flex justify-between flex-col ${
               card.id === "size-ozel" ? "" : ""
             }`}
             initial={{ scale: 1 }}
@@ -166,8 +166,6 @@ const ServiceSection = () => {
               scale: activeCard === card.id ? 1.03 : 1,
               zIndex: activeCard === card.id ? 10 : 1,
             }}
-            whileHover={{ scale: 1.02 }}
-            onClick={() => setActiveCard(card.id)}
             transition={{ duration: 0.3 }}
           >
             {card.id === "size-ozel" ? (

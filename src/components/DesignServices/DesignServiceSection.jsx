@@ -3,7 +3,7 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 
 const DesignServiceSection = () => {
   return (
-    <div className="container max-w-[84rem] mx-auto px-4 py-16 md:py-24 xl:px-2 lg:px-6 ">
+    <div className="container max-w-[84rem] mx-auto px-4 py-16 md:py-8 xl:px-2 lg:px-6 ">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="w-full md:w-1/2 space-y-6">

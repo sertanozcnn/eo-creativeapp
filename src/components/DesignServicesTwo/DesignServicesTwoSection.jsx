@@ -1,4 +1,5 @@
 import { PiArrowUpRightBold } from "react-icons/pi";
+import { useEffect, useState } from "react";
 
 /* eslint-disable react/prop-types */
 const ServiceCard = ({
@@ -8,6 +9,18 @@ const ServiceCard = ({
   className,
   descriptionMaxWidth,
 }) => {
+  const [dynamicMaxWidth, setDynamicMaxWidth] = useState(descriptionMaxWidth);
+
+  useEffect(() => {
+    const updateMaxWidth = () => {
+      setDynamicMaxWidth(window.innerWidth < 768 ? "90%" : descriptionMaxWidth);
+    };
+
+    window.addEventListener("resize", updateMaxWidth);
+    updateMaxWidth();
+
+    return () => window.removeEventListener("resize", updateMaxWidth);
+  }, [descriptionMaxWidth]);
   return (
     <div className={`relative group overflow-hidden rounded-xl ${className}`}>
       <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
@@ -19,7 +32,7 @@ const ServiceCard = ({
           </h3>
           <p
             className="text-white font-primaryLight text-sm leading-relaxed"
-            style={{ maxWidth: descriptionMaxWidth }}
+            style={{ maxWidth: dynamicMaxWidth }}
           >
             {description}
           </p>
@@ -111,7 +124,8 @@ const DesignServicesTwoSection = () => {
       description:
         "Markanızı ön plana çıkaracak yaratıcı ürün ve paket tasarım çözümleri ile müşterilerinizin dikkatini çekin.",
       imageUrl: "https://i.hizliresim.com/swicv7q.jpg",
-      className: "xl:col-span-8 col-span-12 h-[250px]md:h-[300px] xl:h-[385px]",
+      className:
+        "xl:col-span-8 col-span-12 h-[250px] md:h-[300px] xl:h-[385px]",
       descriptionMaxWidth: "40%",
     },
     {

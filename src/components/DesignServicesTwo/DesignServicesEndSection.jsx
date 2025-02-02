@@ -25,14 +25,14 @@ const DesignServicesEndSection = () => {
           <br /> tasarım hizmetleri sunuyoruz.
         </p>
 
-        <p className="font-primaryMedium text-white text-sm">
+        <p className="font-primaryMedium text-white text-sm w">
           Her projeye özel olarak ayrılan profesyonel yaklaşımımızla, süreç
-          boyunca net geri dönüşler ve mükemmel sonuçlar sunmayı taahhüt
-          ediyoruz.
-          <br /> Şeffaflık ilkesiyle, abonelik sürecindeki tüm adımlar önceden
-          belirlenir ve <br />
-          sürpriz maliyetlere yer verilmez. Zamandan tasarruf ederek malzemeye
-          değer katmak için hemen iletişime geçin!
+          boyunca <br className="hidden:block" />
+          hızlı geri dönüşler ve mükemmel sonuçlar sunmayı taahhüt ediyoruz.
+          <br className="hidden:block" /> Şeffaflık ilkesiyle, abonelik
+          sürecindeki tüm adımlar önceden belirlenir ve
+          <br className="hidden:block" /> sürpriz maliyetlere yer bırakılmaz.
+          Zamandan tasarruf ederek markanıza <br className="hidden:block" />
         </p>
 
         <motion.button

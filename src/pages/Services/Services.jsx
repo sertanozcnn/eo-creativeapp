@@ -12,7 +12,9 @@ const Services = () => {
       <DesignService />
 
       <DesignServicesTwo />
-      <Advantage />
+      <div className="-mb-8">
+        <Advantage />
+      </div>
     </div>
   );
 };
