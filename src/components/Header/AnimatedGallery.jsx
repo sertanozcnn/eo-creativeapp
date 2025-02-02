@@ -72,7 +72,7 @@ const AnimatedGallery = () => {
           >
             {duplicateSlides(images).map((image, imgIndex) => (
               <SwiperSlide key={imgIndex}>
-                <div className="h-[300px]">
+                <div className="w-[220px] h-[300px]">
                   <img
                     src={image}
                     alt={`Column ${index + 1} Image ${imgIndex}`}
