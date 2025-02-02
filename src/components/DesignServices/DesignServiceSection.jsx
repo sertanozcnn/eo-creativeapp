@@ -3,7 +3,7 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 
 const DesignServiceSection = () => {
   return (
-    <div className="container max-w-[84rem] mx-auto px-4 py-16 md:py-8 xl:px-2 lg:px-6 ">
+    <div className="container max-w-[84rem] mx-auto px-4 mb-40 -mt-8 py-16 md:py-8 xl:px-2 lg:px-6 ">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="w-full md:w-1/2 space-y-6">
@@ -16,7 +16,7 @@ const DesignServiceSection = () => {
             <br /> markalaşma ve daha <br /> fazlasına ulaşın
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-4 pb-5">
             <p className="text-lg font-primaryRegular text-black">
               İlgi çekici ve ihtiyacınıza özel tüm tasarım
               <br /> ihtiyaçlarınız için EO Creativin uzmanlaşmış ekibi
@@ -38,7 +38,7 @@ const DesignServiceSection = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className={`flex items-center space-x-2 text-sm font-primarySemiBold py-3 px-4 rounded-lg transition-colors duration-500 ease-in-out ${"bg-black text-white "}`}
+            className={`flex items-center space-x-2 text-sm  font-primarySemiBold py-3 px-4 rounded-lg transition-colors duration-500 ease-in-out ${"bg-black text-white "}`}
           >
             <span>REZERVASYON YAPIN</span>
             <PiArrowUpRightBold stroke="1" size={18} />

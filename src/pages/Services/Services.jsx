@@ -12,7 +12,7 @@ const Services = () => {
       <DesignService />
 
       <DesignServicesTwo />
-      <div className="-mb-8">
+      <div className="-mb-6">
         <Advantage />
       </div>
     </div>

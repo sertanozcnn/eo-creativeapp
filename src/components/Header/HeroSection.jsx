@@ -8,10 +8,10 @@ const HeroSection = () => (
     {" "}
     {/* Adjusted top padding */}
     <div className="text-white xl:w-1/2 space-y-8">
-      <h1 className="text-3xl xl:text-6xl font-primaryRegular mt-10  xl:-mt-14 ">
+      <h1 className="text-3xl xl:text-6xl font-primaryRegular mt-10  xl:-mt-14 leading-loose">
         Hızlı. Yaratıcı.
-        <br className="hidden xl:block" />
-        Size Özel.
+        <br className="hidden xl:block " />
+        <span className="xl:block xl:mt-3"> Size Özel.</span>
       </h1>
 
       <p className="text-lg font-primaryLight ">

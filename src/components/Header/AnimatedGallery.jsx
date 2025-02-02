@@ -47,7 +47,8 @@ const AnimatedGallery = () => {
     updateOnWindowResize: true,
     preloadImages: true,
     watchSlidesProgress: true,
-
+    allowTouchMove: false, //el ile kaydırma kapalı
+    simulateTouch: false, //el ile kaydırma kapalı
     loop: true,
     modules: [Autoplay, FreeMode],
     className: "w-1/3 h-full",
@@ -68,11 +69,11 @@ const AnimatedGallery = () => {
               disableOnInteraction: false,
               pauseOnMouseEnter: false,
             }}
-            speed={15000}
+            speed={13000}
           >
             {duplicateSlides(images).map((image, imgIndex) => (
               <SwiperSlide key={imgIndex}>
-                <div className="w-[220px] h-[300px]">
+                <div className="w-[230px] h-[300px]">
                   <img
                     src={image}
                     alt={`Column ${index + 1} Image ${imgIndex}`}
