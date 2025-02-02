@@ -40,6 +40,8 @@ const ResponsiveAnimatedGallery = () => {
           direction="horizontal"
           slidesPerView="auto"
           freeMode={true}
+          allowTouchMove={false}
+          simulateTouch={false}
           spaceBetween={10} // Boşlukları neredeyse sıfırladım
           autoplay={{
             delay: 1,
@@ -47,7 +49,7 @@ const ResponsiveAnimatedGallery = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
           }}
-          speed={10000}
+          speed={6000}
           loop={true}
           modules={[Autoplay, FreeMode]}
           className="w-full h-full"
@@ -70,6 +72,8 @@ const ResponsiveAnimatedGallery = () => {
           direction="horizontal"
           slidesPerView="auto"
           freeMode={true}
+          allowTouchMove={false}
+          simulateTouch={false}
           spaceBetween={10}
           autoplay={{
             delay: 1,
@@ -77,7 +81,7 @@ const ResponsiveAnimatedGallery = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
           }}
-          speed={10000}
+          speed={6000}
           loop={true}
           modules={[Autoplay, FreeMode]}
           className="w-full h-full"

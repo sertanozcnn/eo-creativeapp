@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="76.941" height="76.941" viewBox="0 0 76.941 76.941">
+  <g id="Libraries" transform="translate(-3 -3)">
+    <path id="Path_226" data-name="Path 226" d="M4,14.706A10.706,10.706,0,0,1,14.706,4h53.53A10.706,10.706,0,0,1,78.941,14.706v53.53A10.706,10.706,0,0,1,68.235,78.941H14.706A10.706,10.706,0,0,1,4,68.235Z" fill="none" stroke="#dbdbdb" stroke-width="2"/>
+    <circle id="Ellipse_24" data-name="Ellipse 24" cx="12" cy="12" r="12" transform="translate(15 15)" fill="none" stroke="#000" stroke-width="2"/>
+    <path id="Path_227" data-name="Path 227" d="M33.123,32.408,44.362,13a2.007,2.007,0,0,1,3.474,0L59.075,32.408a2.007,2.007,0,0,1-1.737,3.013H34.86A2.007,2.007,0,0,1,33.123,32.408Z" transform="translate(9.758 2.704)" fill="none" stroke="#000" stroke-width="2"/>
+    <rect id="Rectangle_167" data-name="Rectangle 167" width="23" height="23" rx="1.5" transform="translate(45 45)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_228" data-name="Path 228" d="M20.5,35V57.75" transform="translate(5.581 10.485)" fill="none" stroke="#828282" stroke-linecap="square" stroke-width="2"/>
+    <path id="Path_229" data-name="Path 229" d="M34.75,43.5H12" transform="translate(2.706 13.36)" fill="none" stroke="#828282" stroke-linecap="square" stroke-width="2"/>
+  </g>
+</svg>

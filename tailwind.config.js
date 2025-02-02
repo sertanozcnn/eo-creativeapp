@@ -16,6 +16,8 @@ export default {
         bgTeamMeetTwoBackground: "#F3F3F3",
         bgTeamMeetThreeBackground: "#FFD43B",
         bgTickBackground: "#32A753",
+        bgTeamBackground: "#0B3039",
+        bgTeamBorderBackground: "#073B47",
         bgDividerBgOne: "#C5C5C5",
         bgDividerBgTwo: "#000000",
         black: "#000000",
