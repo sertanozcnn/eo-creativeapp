@@ -9,20 +9,20 @@ const ResponsiveAnimatedGallery = () => {
     "https://i.hizliresim.com/l2qfnof.jpg",
     "https://i.hizliresim.com/d589pqi.jpg",
     "https://i.hizliresim.com/tk8f6mj.jpg",
-    "https://images.pexels.com/photos/45853/grey-crowned-crane-bird-crane-animal-45853.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/70365/forest-sunbeams-trees-sunlight-70365.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://i.hizliresim.com/3u9tqav.jpg",
+    "https://i.hizliresim.com/amptnxl.jpg",
+    "https://i.hizliresim.com/tupupce.jpg",
+    "https://i.hizliresim.com/3u9tqav.jpg",
   ];
 
   const imagesColumn2 = [
-    "https://images.pexels.com/photos/158617/swallow-tail-butterfly-insect-black-158617.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/975231/pexels-photo-975231.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/531857/pexels-photo-531857.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/161950/skogafoss-waterfall-dinamet7-water-161950.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/128868/thimble-common-foxglove-digitalis-purpurea-cinquefoil-128868.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://i.hizliresim.com/tupupce.jpg",
+    "https://i.hizliresim.com/l63t6ov.jpg",
+    "https://i.hizliresim.com/amptnxl.jpg",
+    "https://i.hizliresim.com/d0eox64.jpg",
+    "https://i.hizliresim.com/3u9tqav.jpg",
+    "https://i.hizliresim.com/tg83fjn.jpg",
+    "https://i.hizliresim.com/q54tqa2.jpg",
   ];
 
   return (

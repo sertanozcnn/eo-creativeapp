@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow-x: hidden;
+}
+
 .navbar-background {
   background-image: url("https://res.cloudinary.com/dvrjjdmbn/image/upload/v1738412728/9ecabb8e836148ea76abfba740bf7267e65e8f11-3840x1432-image_gkxhxu.png");
   background-size: cover;
@@ -158,35 +162,4 @@
   width: 100%;
   height: 100%;
   border-radius: 12px;
-}
-
-.noUi-connect {
-  background: black !important;
-}
-
-.noUi-handle {
-  background: black !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 50% !important;
-  width: 18px !important;
-  height: 18px !important;
-  right: -9px !important;
-  top: -7px !important;
-}
-
-.noUi-handle::before,
-.noUi-handle::after {
-  display: none !important;
-}
-
-.noUi-target {
-  background: #f3f4f6 !important;
-  border: none !important;
-  box-shadow: none !important;
-  height: 4px !important;
-}
-
-.noUi-horizontal {
-  height: 4px !important;
 }

@@ -11,6 +11,7 @@ export default {
         bgNeedGray: "#5E5E5E",
         bgBorderGray: "#AEAEAE",
         bgQuestionBackgroundColor: "#FAFAFA",
+        bgSearchBackgroundColor: "#F1F1F1",
 
         eoLogoBackgroundColor: "#9D9F98",
         bgTeamMeetOneBackground: "#013F4D",

@@ -244,6 +244,7 @@ const ContactSection = () => {
             <motion.button
               className="flex items-center space-x-2 bg-black text-white text-sm font-primarySemiBold py-3 px-3 rounded-lg  transition-colors duration-500 ease-in-out justify-center xl:justify-start mx-auto xl:mx-0"
               whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <span>HAYDİ BAŞLAYALIM</span>
               <PiArrowUpRightBold size={18} />

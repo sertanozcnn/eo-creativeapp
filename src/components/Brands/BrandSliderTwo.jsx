@@ -44,7 +44,7 @@ const BrandSliderTwo = () => {
             <img
               src={logo.img}
               alt="Brand logo"
-              className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all filter invert"
+              className="max-w-full max-h-full object-contain grayscale  transition-all filter invert"
             />
           </div>
         ))}

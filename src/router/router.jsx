@@ -5,6 +5,9 @@ import Home from "../pages/Home/Home";
 import Services from "../pages/Services/Services";
 import About from "../pages/About/About";
 import { Contact } from "../pages/Contact/Contact";
+import { PolicyLayoutSectionCookie } from "../components/PolicyLayouts/PolicyLayoutSectionCookie";
+import { PolicyLayoutSectionPrivacy } from "../components/PolicyLayouts/PolicyLayoutSectionPrivacy";
+import { PolicyLayoutSectionTermsConditions } from "../components/PolicyLayouts/PolicyLayoutSectionTermsConditions";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,19 @@ const router = createBrowserRouter([
       {
         path: "/iletisim",
         element: <Contact />,
+      },
+
+      {
+        path: "/gizlilik-politikasi",
+        element: <PolicyLayoutSectionPrivacy />,
+      },
+      {
+        path: "/cerez-politikasi",
+        element: <PolicyLayoutSectionCookie />,
+      },
+      {
+        path: "/sartlar-kosullar",
+        element: <PolicyLayoutSectionTermsConditions />,
       },
     ],
   },

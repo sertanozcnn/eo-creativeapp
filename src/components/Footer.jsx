@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <footer className="py-3 px-4 md:px-8 lg:px-12">
       <div className="max-w-[84rem] mx-auto">
@@ -31,27 +39,51 @@ const Footer = () => {
 
           {/* Links Columns */}
           <div className="space-y-4 md:w-1/2 lg:min-w-40 md:flex md:flex-col md:items-center lg:items-start  lg:ml-36">
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
+            <Link
+              to="/fiyatlandirma"
+              className="font-primaryRegular text-black uppercase text-sm  cursor-pointer"
+            >
               FİYATLANDIRMA
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm cursor-pointer">
+            </Link>
+
+            <Link
+              to="/hakkimizda"
+              className="font-primaryRegular text-black uppercase text-sm cursor-pointer"
+            >
               HAKKIMIZDA
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
+            </Link>
+
+            <Link
+              to="/hizmetler"
+              className="font-primaryRegular text-black uppercase text-sm  cursor-pointer"
+            >
               HİZMETLER
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm cursor-pointer">
+            </Link>
+            <Link
+              to="/blog"
+              className="font-primaryRegular text-black uppercase text-sm cursor-pointer"
+            >
               BLOG
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
+            </Link>
+
+            <Link
+              to="/iletisim"
+              className="font-primaryRegular text-black uppercase text-sm  cursor-pointer"
+            >
               İLETİŞİM
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
+            </Link>
+            <Link
+              to="/sss"
+              className="font-primaryRegular text-black uppercase text-sm  cursor-pointer"
+            >
               S.S.S
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8  cursor-pointer">
+            </Link>
+            <Link
+              to="/gizlilik-politikasi"
+              className="font-primaryRegular text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8  cursor-pointer"
+            >
               GİZLİLİK POLİTİKASI
-            </p>
+            </Link>
           </div>
 
           <div className="space-y-4 md:w-1/2 lg:min-w-40 md:flex md:flex-col md:items-center lg:items-start lg:ml-36">
@@ -73,9 +105,12 @@ const Footer = () => {
             <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
               TWITTER
             </p>
-            <p className="font-primaryRegular  text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8 cursor-pointer">
+            <Link
+              to="/sartlar-kosullar"
+              className="font-primaryRegular  text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8 cursor-pointer"
+            >
               ŞARTLAR & KOŞULLAR
-            </p>
+            </Link>
           </div>
 
           {/* Copyright Info */}
