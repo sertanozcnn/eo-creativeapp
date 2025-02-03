@@ -4,6 +4,7 @@ import Pricing from "../pages/Pricing/Pricing";
 import Home from "../pages/Home/Home";
 import Services from "../pages/Services/Services";
 import About from "../pages/About/About";
+import { Contact } from "../pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/hakkimizda",
         element: <About />,
+      },
+      {
+        path: "/iletisim",
+        element: <Contact />,
       },
     ],
   },

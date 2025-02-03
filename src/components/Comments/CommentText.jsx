@@ -12,7 +12,7 @@ const CommentText = ({
       <div className="flex items-center justify-between mb-8 mx-4 xl:mx-0">
         <h2 className="text-2xl  xl:text-4xl  font-primaryLight max-w-5xl">
           Sizi referanslarımıza ekleyene kadar <br />
-          diğerlerinin bizim hakkımızda söylediklerine göz atın!!
+          diğerlerinin bizim hakkımızda söylediklerine göz atın!
         </h2>
         <div className="flex gap-4">
           {!isFirstSlide && (

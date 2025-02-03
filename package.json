@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.2",
+    "@material-tailwind/react": "^2.1.10",
     "@reduxjs/toolkit": "^2.5.0",
     "editorjs-html": "^4.0.5",
     "framer-motion": "^12.0.5",
     "lucide-react": "^0.474.0",
+    "nouislider": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",

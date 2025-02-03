@@ -7,6 +7,9 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  optimizeDeps: {
+    include: ["nouislider"],
+  },
   /*server: {
     proxy: {
       "/api": {

@@ -54,7 +54,7 @@ const TeamMembers = () => (
 
 const AboutWeTwoSection = () => {
   return (
-    <section className="bg-bgHeaderColor text-white py-24 xl:px-0  ">
+    <section className="bg-bgHeaderColor text-white py-24 xl:px-0 ">
       <div className=" px-3 mx-auto max-w-[85rem] container ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <AboutContent />

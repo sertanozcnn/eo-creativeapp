@@ -11,6 +11,7 @@ export default {
         bgNeedGray: "#5E5E5E",
         bgBorderGray: "#AEAEAE",
         bgQuestionBackgroundColor: "#FAFAFA",
+
         eoLogoBackgroundColor: "#9D9F98",
         bgTeamMeetOneBackground: "#013F4D",
         bgTeamMeetTwoBackground: "#F3F3F3",
@@ -18,6 +19,7 @@ export default {
         bgTickBackground: "#32A753",
         bgTeamBackground: "#0B3039",
         bgTeamTextColor: "#667C81",
+        bgContactInputTextColor: "#A1A1A1",
         bgTeamBorderBackground: "#073B47",
         bgDividerBgOne: "#C5C5C5",
         bgDividerBgTwo: "#000000",

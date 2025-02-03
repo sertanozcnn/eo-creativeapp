@@ -34,8 +34,8 @@ const StatCard = ({ number, label }) => {
 
 const AboutWeOneSection = () => {
   return (
-    <div className="min-h-screen py-16 xl:py-36 px-4 sm:px-6 xl:px-0 lg:px-8 xl:-mb-36">
-      <div className="mx-auto max-w-[84rem] container">
+    <div className="mx-auto max-w-[84rem] container py-16 xl:py-28 px-4 sm:px-6 xl:px-0 lg:px-8 xl:-mb-20">
+      <div className="">
         {/* Hero Section */}
         <div className="text-left xl:text-left mb-32">
           <h1 className="text-3xl md:text-5xl font-primaryLight text-black mb-8 ">

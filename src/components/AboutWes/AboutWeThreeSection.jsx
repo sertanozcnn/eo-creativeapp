@@ -4,7 +4,7 @@ import AboutWeThreeColumnTwo from "./AboutWeThreeColumnTwo";
 
 const AboutWeThreeSection = () => {
   return (
-    <div className="container mx-auto py-12 max-w-[85rem]">
+    <div className="container mx-auto max-w-[85rem]">
       <AboutWeThreeColumnOne />
       <AboutWeImageSection />
       <AboutWeThreeColumnTwo />
