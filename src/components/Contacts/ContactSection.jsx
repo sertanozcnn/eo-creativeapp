@@ -43,6 +43,8 @@ const ContactSection = () => {
   const [contactMethod, setContactMethod] = useState("email");
   const [selectedServices, setSelectedServices] = useState([]);
   const [timeframe, setTimeframe] = useState("");
+  const [minBudget, setMinBudget] = useState("500");
+  const [maxBudget, setMaxBudget] = useState("60.000");
   const contactMethods = [
     { id: "email", label: "E-posta" },
     { id: "phone", label: "Telefon" },
@@ -56,7 +58,18 @@ const ContactSection = () => {
         : [...prev, serviceId]
     );
   };
+  const handleBudgetChange = (value, setter) => {
+    // Remove non-numeric characters except dots
+    let numericValue = value.replace(/[^\d,]/g, "").replace(",", ".");
 
+    // Ensure only one decimal point
+    const parts = numericValue.split(".");
+    const formattedValue = parts[0] + (parts.length > 1 ? "." + parts[1] : "");
+
+    // Format with thousand separators
+    const formatted = Number(formattedValue).toLocaleString("tr-TR");
+    setter(formatted);
+  };
   //container max-w-[85rem] mx-auto py-16 px-4 flex flex-col md:flex-row items-center gap-28
   return (
     <div className="container max-w-[85rem] mx-auto px-4 xl:px-2  py-24">
@@ -237,7 +250,40 @@ const ContactSection = () => {
             <label className="block text-base font-primaryMedium mb-2">
               Bu proje için bütçeniz ne kadar?
             </label>
-            {/*nouislider*/}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 pt-6">
+              <div className="w-full max-w-[220px]">
+                <div className="relative flex items-center border border-black rounded-full px-4 py-2">
+                  <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
+                    min:
+                  </span>
+                  <input
+                    type="text"
+                    value={minBudget}
+                    onChange={(e) =>
+                      handleBudgetChange(e.target.value, setMinBudget)
+                    }
+                    className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
+                  />
+                  <span className="font-primaryRegular text-xl ml-1">TL</span>
+                </div>
+              </div>
+              <div className="w-full max-w-[220px]">
+                <div className="relative flex items-center border border-black rounded-full px-4 py-2">
+                  <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
+                    max:
+                  </span>
+                  <input
+                    type="text"
+                    value={maxBudget}
+                    onChange={(e) =>
+                      handleBudgetChange(e.target.value, setMaxBudget)
+                    }
+                    className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
+                  />
+                  <span className="font-primaryRegular text-xl ml-1">TL</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-end">
