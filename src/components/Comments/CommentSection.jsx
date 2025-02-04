@@ -1,18 +1,39 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 const CommentSection = ({ currentIndex, testimonials }) => {
-  const slideWidth = window.innerWidth <= 768 ? 100 : 33.333;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Calculate translation
+  // For desktop, move one card at a time instead of the whole group
+  const translateX = isMobile ? currentIndex * 100 : currentIndex * 33.333;
 
   return (
-    <div className="max-w-[120%] -ml-[6%] overflow-hidden ">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-[12 0%] -ml-[6%] overflow-hidden">
+      <div className="max-w-8xl xl:ml-[18%] mx-auto px-4">
         <div
           className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * slideWidth}%)` }}
+          style={{ transform: `translateX(-${translateX}%)` }}
         >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="w-[36rem]   flex-shrink-0 px-4">
-              <div className="h-full">
+            <div
+              key={index}
+              className={`${
+                isMobile ? "w-full" : "w-[35.333%] "
+              } flex-shrink-0 px-4`}
+            >
+              <div className="h-full ">
                 <p className="text-base text-black font-primaryRegular leading-relaxed mb-8">
                   {testimonial.text}
                 </p>
@@ -21,6 +42,7 @@ const CommentSection = ({ currentIndex, testimonials }) => {
                     src={testimonial.image}
                     alt={testimonial.author}
                     className="w-12 h-12 rounded-full object-cover mr-4"
+                    loading="lazy"
                   />
                   <div>
                     <h4 className="font-semibold text-lg">

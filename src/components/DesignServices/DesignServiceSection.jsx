@@ -46,7 +46,7 @@ const DesignServiceSection = () => {
         </div>
 
         {/* Right Content - Logo Design */}
-        <div className="w-full md:w-1/3 relative">
+        <div className="hidden md:block w-full md:w-1/3 relative">
           <div className="relative w-full aspect-square">
             {/* Main Logo */}
             <div

@@ -4,7 +4,7 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 const Plan = () => {
   return (
     <div className="mt-14 ">
-      <div className="px-2 py-12 mx-auto container max-w-[85rem]">
+      <div className="px-5 xl:px-2 py-12 mx-auto container max-w-[85rem]">
         <div className="bg-bgHeaderButton rounded-3xl p-4 md:p-8 lg:p-7">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-primaryRegular text-black mb-6 max-w-5xl">
             Mükemmel bir plana ulaşmak için <br /> sadece bir adım kaldı.

@@ -130,7 +130,7 @@ const PolicyLayout = ({ children }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="fixed top-28 right-2 z-50 p-2 bg-white rounded-lg shadow-md lg:hidden"
+            className="fixed top-20 right-2 z-50 p-2 bg-white rounded-lg shadow-md lg:hidden"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6 text-gray-600" />
@@ -143,7 +143,7 @@ const PolicyLayout = ({ children }) => {
           <div
             className={`${
               isMobileMenuOpen
-                ? "fixed inset-0 z-40 bg-white overflow-y-auto lg:relative lg:inset-auto"
+                ? "fixed inset-0 z-40 top-24 bg-white overflow-y-auto lg:relative lg:inset-auto"
                 : "hidden lg:block"
             } lg:col-span-3`}
           >

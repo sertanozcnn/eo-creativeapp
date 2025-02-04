@@ -8,6 +8,8 @@ import { Contact } from "../pages/Contact/Contact";
 import { PolicyLayoutSectionCookie } from "../components/PolicyLayouts/PolicyLayoutSectionCookie";
 import { PolicyLayoutSectionPrivacy } from "../components/PolicyLayouts/PolicyLayoutSectionPrivacy";
 import { PolicyLayoutSectionTermsConditions } from "../components/PolicyLayouts/PolicyLayoutSectionTermsConditions";
+import { SSS_Section } from "../pages/SSS/SSS_Section";
+import { Error404 } from "../pages/ErrorPages/Error404";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/sartlar-kosullar",
         element: <PolicyLayoutSectionTermsConditions />,
+      },
+      {
+        path: "/sss",
+        element: <SSS_Section />,
+      },
+      {
+        path: "*",
+        element: <Error404 />,
       },
     ],
   },

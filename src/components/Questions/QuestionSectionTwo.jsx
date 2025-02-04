@@ -40,8 +40,12 @@ const QuestionSectionTwo = () => {
     <div className="max-w-[87rem] mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col md:flex-row gap-8 md:gap-16">
         {/* Title Section */}
-        <div className={`md:w-1/3 ${openQuestion ? "h-[26rem]" : "h-[20rem]"}`}>
-          <div className="sticky top-28">
+        <div
+          className={`md:w-1/3 ${
+            openQuestion ? "h-auto md:h-[32rem]" : "h-auto md:h-[26rem]"
+          }`}
+        >
+          <div className="relative md:sticky md:top-28">
             <div className="flex items-center gap-3 mb-4">
               <h1 className="text-4xl font-primarySemiBold text-black">
                 İş Akışı

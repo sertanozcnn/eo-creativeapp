@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           {/* Links Columns */}
-          <div className="space-y-4 md:w-1/2 lg:min-w-40 md:flex md:flex-col md:items-center lg:items-start  lg:ml-36">
+          <div className="space-y-4 flex flex-col md:w-1/2 lg:min-w-40 md:flex md:flex-col md:items-center lg:items-start  lg:ml-36">
             <Link
               to="/fiyatlandirma"
               className="font-primaryRegular text-black uppercase text-sm  cursor-pointer"
@@ -107,7 +107,7 @@ const Footer = () => {
             </p>
             <Link
               to="/sartlar-kosullar"
-              className="font-primaryRegular  text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8 cursor-pointer"
+              className="font-primaryRegular text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8 cursor-pointer"
             >
               ŞARTLAR & KOŞULLAR
             </Link>

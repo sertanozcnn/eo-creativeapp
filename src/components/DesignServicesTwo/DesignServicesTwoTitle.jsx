@@ -8,7 +8,7 @@ const DesignServicesTwoTitle = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-primaryLight text-white"
+          className="text-3xl xl:px-0 px-3 font-primaryLight text-white"
         >
           İhtiyacınıza uygun ve fark yaratan
           <br /> <span className="font-primaryRegular">hizmetlerimiz</span>

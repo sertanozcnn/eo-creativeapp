@@ -8,7 +8,7 @@ const ServicesText = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl font-primaryLight text-black"
+          className="text-4xl xl:text-5xl font-primaryLight text-black"
         >
           Hepsi bir arada hizmetler
         </motion.h2>

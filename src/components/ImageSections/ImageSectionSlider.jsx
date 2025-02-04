@@ -54,16 +54,21 @@ const ImageSectionSlider = () => {
         {extendedImages.map((item, index) => (
           <SwiperSlide key={index} className="rounded-2xl overflow-hidden">
             <div className="relative w-full h-full group">
-              <h3 className="absolute top-10 left-1/2 transform  min-w-[250px] max-w-[300px] px-2 flex items-center justify-center -translate-x-1/2 text-white text-xl lg:text-2xl xl:text-xl 2xl:text-2xl font-primaryRegular z-10">
+              <h3 className="absolute top-10 left-1/2 transform -translate-x-1/2 text-white text-xl lg:text-2xl xl:text-xl 2xl:text-2xl font-primaryRegular z-10 text-center w-[90%] px-4">
                 {item.title}
               </h3>
-              <img src={item.image} alt={item.title} className="object-cover" />
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                 <div className="flex flex-wrap gap-1 ">
                   {item.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="text-[11px] border-white border-2 font-primarySemiBold text-white px-2 py-0.5 rounded-full"
+                      className="text-[10px] md:text-[11px] border-white border-[2px] font-primarySemiBold text-white px-2 py-0.5 rounded-full whitespace-nowrap"
                     >
                       {tag}
                     </span>

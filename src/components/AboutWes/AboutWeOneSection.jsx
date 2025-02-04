@@ -34,7 +34,7 @@ const StatCard = ({ number, label }) => {
 
 const AboutWeOneSection = () => {
   return (
-    <div className="mx-auto max-w-[84rem] container py-16 xl:py-28 px-4 sm:px-6 xl:px-0 lg:px-8 xl:-mb-20">
+    <div className="mx-auto max-w-[84rem] container py-16 xl:py-28 px-4 sm:px-6 xl:px-0 lg:px-8 xl:-mb-20 ">
       <div className="">
         {/* Hero Section */}
         <div className="text-left xl:text-left mb-32">
@@ -60,7 +60,7 @@ const AboutWeOneSection = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="border-t-2 border-gray-200">
+        <div className="border-t-2 border-gray-200 xl:-mt-0 -mt-16">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 pt-12 ">
             <StatCard number="13" label="Abone" />
             <StatCard number="60+" label="Müşteri" />

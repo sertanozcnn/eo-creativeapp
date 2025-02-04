@@ -1,12 +1,12 @@
 const TeamMeetImage = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[86rem] mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[86rem] mx-auto px-6 xl:px-4">
       {/* Expert Team Card */}
       <div className="bg-bgTeamMeetOneBackground rounded-2xl overflow-hidden transition-transform  group">
         <img
           src="https://i.hizliresim.com/rkvmm9g.jpg"
           alt="Expert Team"
-          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[75%] "
+          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[72%] xl:group-hover:h-[77%] "
         />
         <div className="p-6">
           <h4 className="text-white text-xl font-primaryRegular">
@@ -25,7 +25,7 @@ const TeamMeetImage = () => {
         <img
           src="https://i.hizliresim.com/cephail.jpg"
           alt="Fast Delivery"
-          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[75%]"
+          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[72%] xl:group-hover:h-[77%]"
         />
         <div className="p-6">
           <h4 className="text-xl font-primaryRegular text-black">
@@ -44,7 +44,7 @@ const TeamMeetImage = () => {
         <img
           src="https://i.hizliresim.com/oid9ofo.jpg"
           alt="Subscription Model"
-          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[75%]"
+          className="w-full h-[88%] object-cover transition-all duration-500 ease-in-out group-hover:h-[72%] xl:group-hover:h-[77%]"
         />
         <div className="p-6">
           <h4 className="text-xl font-primaryRegular text-black">

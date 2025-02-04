@@ -28,7 +28,7 @@ const SocialSection = () => {
                      transition-all duration-500 ease-in-out
                      hover:bg-black group"
         >
-          <div className="flex flex-col items-start justify-between gap-28 p-6">
+          <div className="flex flex-col items-start justify-between gap-20 xl:gap-28 p-6">
             <item.icon
               className="w-8 h-8 text-black group-hover:text-white
                          transition-all duration-500 ease-in-out"

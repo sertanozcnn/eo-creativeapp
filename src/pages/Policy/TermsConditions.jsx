@@ -20,6 +20,16 @@ const TermsConditions = () => {
   return (
     <PolicyLayout sections={sections}>
       <div className="space-y-6">
+        <section className="border-b border-gray-200 ">
+          <p className="text-black text-sm   tracking-normal leading-normal font-primaryMedium max-w-[95%] xl:max-w-[62%]">
+            Yayın Tarihi: 01 Ocak 2025
+          </p>
+
+          <p className="text-black text-sm mt-2 mb-6 tracking-normal leading-normal font-primaryMedium max-w-[95%] xl:max-w-[62%]">
+            Son Güncelleme Tarihi: 05 Ocak 2025
+          </p>
+        </section>
+
         <section id="sart-giris" className="scroll-mt-28">
           <p className="text-black text-sm tracking-normal mb-10 leading-normal font-primaryRegular max-w-[95%] xl:max-w-[62%]">
             Bu Şartlar ve Koşullar, EO Creative tarafından sunulan hizmetlerin
@@ -29,7 +39,7 @@ const TermsConditions = () => {
           </p>
 
           <h2 className="text-4xl font-primarySemiBold mb-10 space-y-6">
-            Giriş
+            Şartlar & Koşullar
           </h2>
 
           <p className="text-black text-sm tracking-normal leading-normal font-primaryRegular max-w-[95%] xl:max-w-[62%]">

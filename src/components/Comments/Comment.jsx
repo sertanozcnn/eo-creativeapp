@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CommentSection from "./CommentSection";
 import CommentText from "./CommentText";
 
@@ -15,7 +15,6 @@ const testimonials = [
         yaratıcı ve profesyonel bir ekiple çalıştığımız için çok mutluyuz.
       </span>
     ),
-
     author: "Elif Yılmaz",
     role: "Pazarlama Müdürü, Nova Teknoloji",
     image: "/comments_photo.svg",
@@ -43,7 +42,6 @@ const testimonials = [
     role: "Kurucu Ortak, Zirve Yapı ve Dekorasyon",
     image: "/comments_photo.svg",
   },
-
   {
     text: (
       <span>
@@ -56,7 +54,6 @@ const testimonials = [
         yaratıcı ve profesyonel bir ekiple çalıştığımız için çok mutluyuz.
       </span>
     ),
-
     author: "Elif Yılmaz",
     role: "Pazarlama Müdürü, Nova Teknoloji",
     image: "/comments_photo.svg",
@@ -84,32 +81,59 @@ const testimonials = [
     role: "Kurucu Ortak, Zirve Yapı ve Dekorasyon",
     image: "/comments_photo.svg",
   },
+  {
+    text: (
+      <span>
+        EO Creative ile çalışmak her zaman harika bir deneyim. Tasarımlarımızı
+        bizim kadar önemsediklerini hissediyoruz ve bu da sonuçlara yansıyor.
+        <br />
+        <br /> Verdikleri her hizmet, markamızın estetiği ve mesajıyla mükemmel
+        bir uyum içinde. Ayrıca, geri bildirimlerimizi hızla değerlendirip,
+        uygulamalarıyla sürekli olarak beklentilerimizi aşıyorlar. Böylesine
+        yaratıcı ve profesyonel bir ekiple çalıştığımız için çok mutluyuz.
+      </span>
+    ),
+    author: "Elif Yılmaz",
+    role: "Pazarlama Müdürü, Nova Teknoloji",
+    image: "/comments_photo.svg",
+  },
 ];
 
 const Comment = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const totalTestimonials = testimonials.length + 1; // Burada hata giderildi
-  const displayCount = 3;
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-  const isMobile = window.innerWidth <= 768;
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const totalTestimonials = testimonials.length;
+
+  // Calculate maxIndex based on device type
   const maxIndex = isMobile
-    ? totalTestimonials
-    : totalTestimonials - displayCount;
+    ? totalTestimonials - 1 // For mobile, we can go to the last testimonial
+    : totalTestimonials - 2; // For desktop, we can go to the last testimonial as well
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? maxIndex : prev + 1));
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? 0 : prev - 1));
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   const isFirstSlide = currentIndex === 0;
-  const isLastSlide = currentIndex === maxIndex;
+  const isLastSlide = currentIndex >= maxIndex;
 
   return (
-    <section className="py-10 overflow-hidden ">
+    <section className="py-10 overflow-hidden">
       <CommentText
         onPrevSlide={prevSlide}
         onNextSlide={nextSlide}

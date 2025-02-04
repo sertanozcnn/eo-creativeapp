@@ -1,6 +1,6 @@
 const AboutWeImageSection = () => {
   return (
-    <div className=" container mx-auto px-2 py-32 ">
+    <div className=" container mx-auto px-5 xl:px-2 py-32 ">
       <div className="grid md:grid-cols-2 gap-8">
         {/* Left Card */}
         <div className="relative rounded-2xl overflow-hidden group">

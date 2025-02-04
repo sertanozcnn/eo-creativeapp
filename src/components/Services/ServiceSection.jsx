@@ -118,7 +118,7 @@ const ServiceSection = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-[85rem]">
+    <div className="container mx-auto px-5 xl:px-4 py-12 max-w-[85rem]">
       {/* Top Navigation */}
       <div className="flex flex-col items-center mb-16">
         <div className="bg-gray-100 rounded-xl p-2 mb-4">

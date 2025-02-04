@@ -20,9 +20,19 @@ const CookiePolicy = () => {
   return (
     <PolicyLayout sections={sections}>
       <div className="space-y-6">
+        <section className="border-b border-gray-200 ">
+          <p className="text-black text-sm   tracking-normal leading-normal font-primaryMedium max-w-[95%] xl:max-w-[62%]">
+            Yayın Tarihi: 01 Ocak 2025
+          </p>
+
+          <p className="text-black text-sm mt-2 mb-6 tracking-normal leading-normal font-primaryMedium max-w-[95%] xl:max-w-[62%]">
+            Son Güncelleme Tarihi: 05 Ocak 2025
+          </p>
+        </section>
+
         <section id="cerez-giris" className="scroll-mt-28">
           <h2 className="text-4xl font-primarySemiBold mb-4 space-y-6">
-            Giriş
+            Çerez Politikası
           </h2>
 
           <p className="text-black text-sm mt-8 mb-8 tracking-normal leading-normal font-primaryMedium max-w-[95%] xl:max-w-[62%]">

@@ -42,12 +42,16 @@ const ResponsiveAnimatedGallery = () => {
           freeMode={true}
           allowTouchMove={false}
           simulateTouch={false}
-          spaceBetween={10} // Boşlukları neredeyse sıfırladım
+          touchEventsTarget="none"
+          noSwiping={true}
+          preventInteractionOnTransition={true}
+          spaceBetween={10}
           autoplay={{
             delay: 1,
             reverseDirection: true,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
+            stopOnLastSlide: false,
           }}
           speed={6000}
           loop={true}
@@ -74,12 +78,15 @@ const ResponsiveAnimatedGallery = () => {
           freeMode={true}
           allowTouchMove={false}
           simulateTouch={false}
+          touchEventsTarget="none"
+          noSwiping={true}
+          preventInteractionOnTransition={true}
           spaceBetween={10}
           autoplay={{
             delay: 1,
-            reverseDirection: false,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
+            stopOnLastSlide: false,
           }}
           speed={6000}
           loop={true}
