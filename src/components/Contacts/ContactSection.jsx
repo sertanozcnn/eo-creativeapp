@@ -148,7 +148,7 @@ const ContactSection = () => {
 
             <div className="relative">
               <input
-                type="email"
+                type="text"
                 className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
                 placeholder="+90 | XXX XXX XXXX"
               />
@@ -250,8 +250,8 @@ const ContactSection = () => {
             <label className="block text-base font-primaryMedium mb-2">
               Bu proje için bütçeniz ne kadar?
             </label>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 pt-6">
-              <div className="w-full max-w-[220px]">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 pt-2">
+              <div className="w-full md:max-w-[200px]">
                 <div className="relative flex items-center border border-black rounded-full px-4 py-2">
                   <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
                     min:
@@ -264,10 +264,12 @@ const ContactSection = () => {
                     }
                     className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
                   />
-                  <span className="font-primaryRegular text-xl ml-1">TL</span>
+                  <span className="font-primaryRegular text-xl ml-40 md:ml-5">
+                    TL
+                  </span>
                 </div>
               </div>
-              <div className="w-full max-w-[220px]">
+              <div className="w-full md:max-w-[200px]">
                 <div className="relative flex items-center border border-black rounded-full px-4 py-2">
                   <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
                     max:
@@ -280,7 +282,9 @@ const ContactSection = () => {
                     }
                     className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
                   />
-                  <span className="font-primaryRegular text-xl ml-1">TL</span>
+                  <span className="font-primaryRegular text-xl ml-40 md:ml-5">
+                    TL
+                  </span>
                 </div>
               </div>
             </div>

@@ -42,7 +42,7 @@ const QuestionSectionTwo = () => {
         {/* Title Section */}
         <div
           className={`md:w-1/3 ${
-            openQuestion ? "h-auto md:h-[32rem]" : "h-auto md:h-[26rem]"
+            openQuestion ? "h-auto md:h-[25rem]" : "h-auto md:h-[20rem]"
           }`}
         >
           <div className="relative md:sticky md:top-28">
