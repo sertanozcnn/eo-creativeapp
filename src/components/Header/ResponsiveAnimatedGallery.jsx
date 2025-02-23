@@ -2,29 +2,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import PropTypes from "prop-types";
 
-const ResponsiveAnimatedGallery = () => {
-  const imagesColumn1 = [
-    "https://i.hizliresim.com/b56ghwx.png",
-    "https://i.hizliresim.com/l2qfnof.jpg",
-    "https://i.hizliresim.com/d589pqi.jpg",
-    "https://i.hizliresim.com/tk8f6mj.jpg",
-    "https://i.hizliresim.com/3u9tqav.jpg",
-    "https://i.hizliresim.com/amptnxl.jpg",
-    "https://i.hizliresim.com/tupupce.jpg",
-    "https://i.hizliresim.com/3u9tqav.jpg",
-  ];
-
-  const imagesColumn2 = [
-    "https://i.hizliresim.com/tupupce.jpg",
-    "https://i.hizliresim.com/l63t6ov.jpg",
-    "https://i.hizliresim.com/amptnxl.jpg",
-    "https://i.hizliresim.com/d0eox64.jpg",
-    "https://i.hizliresim.com/3u9tqav.jpg",
-    "https://i.hizliresim.com/tg83fjn.jpg",
-    "https://i.hizliresim.com/q54tqa2.jpg",
-  ];
-
+const ResponsiveAnimatedGallery = ({
+  imagesResponsiveColumn1,
+  imagesResponsiveColumn2,
+}) => {
   return (
     <div className="relative w-full h-[68vh] overflow-hidden bg-bgHeaderColor">
       {/* Kenarlarda gradyan efektleri */}
@@ -58,7 +41,7 @@ const ResponsiveAnimatedGallery = () => {
           modules={[Autoplay, FreeMode]}
           className="w-full h-full"
         >
-          {imagesColumn1.map((image, index) => (
+          {imagesResponsiveColumn1.map((image, index) => (
             <SwiperSlide key={index}>
               <a href="#">
                 <img
@@ -93,7 +76,7 @@ const ResponsiveAnimatedGallery = () => {
           modules={[Autoplay, FreeMode]}
           className="w-full h-full"
         >
-          {imagesColumn2.map((image, index) => (
+          {imagesResponsiveColumn2.map((image, index) => (
             <SwiperSlide key={index}>
               <a href="#">
                 <img
@@ -110,6 +93,10 @@ const ResponsiveAnimatedGallery = () => {
       <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-bgHeaderColor to-transparent z-10"></div>
     </div>
   );
+};
+ResponsiveAnimatedGallery.propTypes = {
+  imagesResponsiveColumn1: PropTypes.arrayOf(PropTypes.string).isRequired,
+  imagesResponsiveColumn2: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ResponsiveAnimatedGallery;

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useGetAboutOneSectionsQuery } from "../../redux/services/aboutOneSection";
+import { FiLoader } from "react-icons/fi";
 
 /* eslint-disable react/prop-types */
 const StatCard = ({ number, label }) => {
@@ -33,39 +35,59 @@ const StatCard = ({ number, label }) => {
 };
 
 const AboutWeOneSection = () => {
+  const { data, error, isLoading } = useGetAboutOneSectionsQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
+  const aboutOneData = data[0];
+
   return (
     <div className="mx-auto max-w-[84rem] container py-16 xl:py-28 px-4 sm:px-6 xl:px-0 lg:px-8 xl:-mb-20 ">
       <div className="">
         {/* Hero Section */}
         <div className="text-left xl:text-left mb-32">
           <h1 className="text-3xl md:text-5xl font-primaryLight text-black mb-8 ">
-            Vizyonumuz, olağanüstü tasarımlarla markaların
+            {aboutOneData.titleOne}
             <span className="block font-primaryLight text-black mb-8 xl:mt-2">
-              fark yaratmasına ve başarıya ulaşmasına ilham vermek
+              {aboutOneData.titleTwo}
             </span>
           </h1>
-          <p className="text-2xl text-left  font-primaryRegular text-black mb-8">
-            Markaların benzersiz hikayelerini en etkileyici şekilde
-            anlatabilmeleri
-            <br /> için yenilikçi çözümler sunuyoruz.
-          </p>
-          <p className="text-base text-left  font-primaryRegular text-black mb-8 leading-relaxed xl:max-w-[62rem]">
-            Tasarımdan stratejiye, her aşamada yüksek kalite ve yaratıcı
-            yaklaşımımızla markalarınıza değer katmayı hedefliyoruz. İlham veren
-            tasarımlarla, hedef kitlenizle güçlü bağlar kurmanıza ve iş
-            hedeflerinizi aşmanıza yardımcı oluyoruz. Başarıyı bir yolculuk
-            olarak görüyor, bu yolculukta markalarınıza eşlik etmekten mutluluk
-            duyuyoruz.
-          </p>
+          <p
+            className="text-2xl text-left  font-primaryRegular text-black mb-8"
+            dangerouslySetInnerHTML={{ __html: aboutOneData.descOne }}
+          ></p>
+          <p
+            className="text-base text-left  font-primaryRegular text-black mb-8 leading-relaxed xl:max-w-[62rem]"
+            dangerouslySetInnerHTML={{ __html: aboutOneData.descTwo }}
+          ></p>
         </div>
 
         {/* Stats Grid */}
         <div className="border-t-2 border-gray-200 xl:-mt-0 -mt-16">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 pt-12 ">
-            <StatCard number="13" label="Abone" />
-            <StatCard number="60+" label="Müşteri" />
-            <StatCard number="5 yıl" label="Deneyim" />
-            <StatCard number="100+" label="Proje" />
+            {aboutOneData.stats.map((stat) => (
+              <StatCard
+                key={stat._id}
+                number={stat.number}
+                label={stat.label}
+              />
+            ))}
           </div>
         </div>
       </div>

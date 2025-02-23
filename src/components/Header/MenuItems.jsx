@@ -1,8 +1,37 @@
 /* eslint-disable react/prop-types */
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
+import { useNavigate } from "react-router-dom";
 
 const MenuItems = ({ isScrolled, isMobile }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadCalApi = async () => {
+      try {
+        const cal = await getCalApi({ namespace: "30dk" });
+        if (!cal) {
+          return;
+        }
+        cal("ui", {
+          theme: "light",
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#292929" },
+            dark: { "cal-brand": "#fafafa" },
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      } catch (error) {
+        console.error("Cal API yüklenirken hata oluştu:", error);
+      }
+    };
+
+    loadCalApi();
+  }, []);
+
   const links = {
     FİYATLANDIRMA: "/fiyatlandirma",
     HİZMETLER: "/hizmetler",
@@ -36,6 +65,23 @@ const MenuItems = ({ isScrolled, isMobile }) => {
       ))}
       <li>
         <motion.button
+          data-cal-namespace="30dk"
+          data-cal-link="eocreative/30dk"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
+          onClick={async () => {
+            try {
+              const cal = await getCalApi({ namespace: "30dk" });
+              if (!cal) {
+                return;
+              }
+              cal("ui", "open", {
+                calLink: "eocreative/30dk",
+                config: { layout: "month_view", theme: "light" },
+              });
+            } catch (error) {
+              console.error("Cal API yüklenirken hata oluştu:", error);
+            }
+          }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={`flex items-center space-x-2 text-sm font-primarySemiBold py-3 px-3 rounded-lg transition-colors duration-500 ease-in-out ${
@@ -50,6 +96,7 @@ const MenuItems = ({ isScrolled, isMobile }) => {
       </li>
       <li>
         <motion.button
+          onClick={() => navigate("/fiyatlandirma")}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={`flex items-center space-x-2 text-sm font-primarySemiBold py-3 px-3 rounded-lg transition-colors duration-500 ease-in-out

@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ServiceSection = ({ activeTab, activeCard }) => {
+  const navigate = useNavigate();
+
   const cards = [
     {
       id: "temel",
@@ -79,6 +84,31 @@ const ServiceSection = ({ activeTab, activeCard }) => {
         "Size nasıl yardımcı olabileceğimiz hakkında daha fazla bilgi edinin.",
     },
   ];
+
+  useEffect(() => {
+    const loadCalApi = async () => {
+      try {
+        const cal = await getCalApi({ namespace: "30dk" });
+
+        if (!cal) {
+          return;
+        }
+        cal("ui", {
+          theme: "light",
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#292929" },
+            dark: { "cal-brand": "#fafafa" },
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      } catch (error) {
+        console.error("Cal API yüklenirken hata oluştu:", error);
+      }
+    };
+
+    loadCalApi();
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-[85rem]">
@@ -180,6 +210,7 @@ const ServiceSection = ({ activeTab, activeCard }) => {
                   className="w-full py-3 px-6 bg-black text-white rounded-lg font-primaryRegular text-sm mt-8"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => navigate("/iletisim")}
                 >
                   BİZE ULAŞIN
                 </motion.button>
@@ -301,6 +332,23 @@ const ServiceSection = ({ activeTab, activeCard }) => {
                   className="w-full py-3 px-6 bg-black text-white rounded-lg text-sm font-primaryRegular"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  data-cal-namespace="30dk"
+                  data-cal-link="eocreative/30dk"
+                  data-cal-config='{"layout":"month_view","theme":"light"}'
+                  onClick={async () => {
+                    try {
+                      const cal = await getCalApi({ namespace: "30dk" });
+                      if (!cal) {
+                        return;
+                      }
+                      cal("ui", "open", {
+                        calLink: "eocreative/30dk",
+                        config: { layout: "month_view", theme: "light" },
+                      });
+                    } catch (error) {
+                      console.error("Cal API yüklenirken hata oluştu:", error);
+                    }
+                  }}
                 >
                   BİR ARAMA PLANLAYIN
                 </motion.button>
@@ -317,6 +365,23 @@ const ServiceSection = ({ activeTab, activeCard }) => {
           className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          data-cal-namespace="30dk"
+          data-cal-link="eocreative/30dk"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
+          onClick={async () => {
+            try {
+              const cal = await getCalApi({ namespace: "30dk" });
+              if (!cal) {
+                return;
+              }
+              cal("ui", "open", {
+                calLink: "eocreative/30dk",
+                config: { layout: "month_view", theme: "light" },
+              });
+            } catch (error) {
+              console.error("Cal API yüklenirken hata oluştu:", error);
+            }
+          }}
         >
           BİR ARAMA PLANLAYIN
           <svg

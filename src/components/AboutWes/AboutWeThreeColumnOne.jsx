@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
+import { FiLoader } from "react-icons/fi";
+import { useGetAboutAdvantageContentOnesQuery } from "../../redux/services/aboutAdvantageContentOneApi";
 
-const advantages = [
-  {
-    icon: "/star_two.svg",
-    subtitle: "Yaratıcılık ve yenilikçilik",
-    description:
-      "Her projeye özgün bir bakış açısı getirerek fark yaratan tasarımlar sunuyoruz. Yenilikçi çözümlerle markalara değer katıyoruz.",
-  },
-  {
-    icon: "/home_heart.svg",
-    subtitle: "İş birliği ve güven",
-    description:
-      "Müşterilerimizle güçlü ve şeffaf bir iletişim kurarak ihtiyaçlarına en iyi şekilde cevap veriyoruz. Birlikte çalışarak başarıya ulaşmayı önemsiyoruz.",
-  },
-  {
-    icon: "/leaf.svg",
-    subtitle: "Sürdürülebilirlik ve sorumluluk",
-    description:
-      "Tasarımlarımızda çevreye duyarlı, uzun vadeli etkiler yaratan çözümler sunmayı hedefliyoruz ve daha iyi bir gelecek inşa etmeyi amaçlıyoruz.",
-  },
-];
 const AboutWeThreeColumnOne = () => {
+  const { data, error, isLoading } = useGetAboutAdvantageContentOnesQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <section>
@@ -45,7 +47,7 @@ const AboutWeThreeColumnOne = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-8  mx-auto mt-12">
-          {advantages.map((advantage, index) => (
+          {data?.map((advantage, index) => (
             <motion.div
               key={index}
               className="flex flex-col items-start p-5 xl:p-2 "
@@ -58,7 +60,7 @@ const AboutWeThreeColumnOne = () => {
                 <img src={advantage.icon} className="w-12 h-12" />
               </div>
               <h4 className="text-xl font-primaryRegular text-black mb-3">
-                {advantage.subtitle}
+                {advantage.title}
               </h4>
               <p className="font-primaryRegular text-black text-sm leading-relaxed">
                 {advantage.description}

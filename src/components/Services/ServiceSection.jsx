@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getCalApi } from "@calcom/embed-react";
+import { useNavigate } from "react-router-dom";
 
 const ServiceSection = () => {
+  const navigate = useNavigate();
+
   const [activeCard, setActiveCard] = useState("pro");
   const [activeTab, setActiveTab] = useState("pro");
 
@@ -55,11 +58,12 @@ const ServiceSection = () => {
         "Uzman ekip",
       ],
       features2: [
-        "Logo Tasarımı",
         "Kurumsal Kimlik Kılavuzu",
-        "Grafik Tasarım",
+
+        "Grafik Tasarım (Her şey dahil)",
         "Web Tasarımı",
         "3D Tasarım",
+        "Logo Tasarımı",
         "Mockup Tasarımı",
         "UI/UX Tasarımı",
         "İllüstrasyonlar",
@@ -94,9 +98,7 @@ const ServiceSection = () => {
     const loadCalApi = async () => {
       try {
         const cal = await getCalApi({ namespace: "30dk" });
-        console.log(cal); // Check if the calendar API is loaded
         if (!cal) {
-          console.error("getCalApi başarısız oldu!");
           return;
         }
         cal("ui", {
@@ -108,7 +110,6 @@ const ServiceSection = () => {
           hideEventTypeDetails: false,
           layout: "month_view",
         });
-        console.log("Cal API başarıyla yüklendi!");
       } catch (error) {
         console.error("Cal API yüklenirken hata oluştu:", error);
       }
@@ -241,6 +242,7 @@ const ServiceSection = () => {
                   className="w-full py-3 px-6 bg-black text-white rounded-lg font-primaryRegular text-sm mt-8"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => navigate("/iletisim")}
                 >
                   BİZE ULAŞIN
                 </motion.button>
@@ -267,11 +269,11 @@ const ServiceSection = () => {
                   </div>
                   {card.price && (
                     <div className="mb-2">
-                      <span className="text-3xl font-primarySemiBold">
+                      <span className="text-3xl font-primarySemiBold block">
                         {card.price}
                       </span>
                       {card.originalPrice && (
-                        <span className="text-sm  line-through ml-2 font-primaryLight text-black">
+                        <span className="text-sm  line-through ml-1  font-primaryLight text-black">
                           {card.originalPrice}
                         </span>
                       )}
@@ -362,6 +364,23 @@ const ServiceSection = () => {
                   className="w-full py-3 px-6 bg-black text-white rounded-lg text-sm font-primaryRegular"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  data-cal-namespace="30dk"
+                  data-cal-link="eocreative/30dk"
+                  data-cal-config='{"layout":"month_view","theme":"light"}'
+                  onClick={async () => {
+                    try {
+                      const cal = await getCalApi({ namespace: "30dk" });
+                      if (!cal) {
+                        return;
+                      }
+                      cal("ui", "open", {
+                        calLink: "eocreative/30dk",
+                        config: { layout: "month_view", theme: "light" },
+                      });
+                    } catch (error) {
+                      console.error("Cal API yüklenirken hata oluştu:", error);
+                    }
+                  }}
                 >
                   BİR ARAMA PLANLAYIN
                 </motion.button>
@@ -373,19 +392,18 @@ const ServiceSection = () => {
 
       {/* Questions Section */}
       <div className="mt-8 p-6 bg-gray-100 rounded-xl flex justify-between items-center flex-col md:flex-row">
-        <p className="text-xl font-primarySemiBold">Sorularınız mı var?</p>
+        <p className="text-xl font-primaryRegular">Sorularınız mı var?</p>
         <motion.button
-          data-cal-namespace="30dk"
-          data-cal-link="eocreative/30dk"
-          data-cal-config='{"layout":"month_view","theme":"light"}'
           className="flex items-center text-sm px-6 py-3 xl:mt-0 mt-5 bg-black text-white rounded-lg font-primaryRegular"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          data-cal-namespace="30dk"
+          data-cal-link="eocreative/30dk"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
           onClick={async () => {
             try {
               const cal = await getCalApi({ namespace: "30dk" });
               if (!cal) {
-                console.error("getCalApi başarısız oldu!");
                 return;
               }
               cal("ui", "open", {

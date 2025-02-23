@@ -1,7 +1,36 @@
 import { motion } from "framer-motion";
 import { PiArrowUpRightBold } from "react-icons/pi";
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
+import { useNavigate } from "react-router-dom";
 
 const Plan = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadCalApi = async () => {
+      try {
+        const cal = await getCalApi({ namespace: "30dk" });
+        if (!cal) {
+          return;
+        }
+        cal("ui", {
+          theme: "light",
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#292929" },
+            dark: { "cal-brand": "#fafafa" },
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      } catch (error) {
+        console.error("Cal API yüklenirken hata oluştu:", error);
+      }
+    };
+
+    loadCalApi();
+  }, []);
+
   return (
     <div className="mt-14 ">
       <div className="px-5 xl:px-2 py-12 mx-auto container max-w-[85rem]">
@@ -31,6 +60,7 @@ const Plan = () => {
             {/* Butonlar kısmı */}
             <div className="flex flex-col sm:flex-row gap-5 justify-between sm:justify-end xl:ml-auto items-center sm:items-start">
               <motion.button
+                onClick={() => navigate("/fiyatlandirma")}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 PiArrowUpRightBold
@@ -40,6 +70,23 @@ const Plan = () => {
                 <PiArrowUpRightBold className="w-5 h-5" />
               </motion.button>
               <motion.button
+                data-cal-namespace="30dk"
+                data-cal-link="eocreative/30dk"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+                onClick={async () => {
+                  try {
+                    const cal = await getCalApi({ namespace: "30dk" });
+                    if (!cal) {
+                      return;
+                    }
+                    cal("ui", "open", {
+                      calLink: "eocreative/30dk",
+                      config: { layout: "month_view", theme: "light" },
+                    });
+                  } catch (error) {
+                    console.error("Cal API yüklenirken hata oluştu:", error);
+                  }
+                }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-black text-white px-3 py-3 space-x-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors"

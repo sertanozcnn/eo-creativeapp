@@ -1,24 +1,25 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
+import process from "node:process";
 
-// https://vite.dev/config/
-export default defineConfig({
-  define: {
-    "process.env": process.env,
-  },
-  optimizeDeps: {
-    include: ["nouislider"],
-  },
-  /*server: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:5173", // API'nin bulunduğu sunucu adresi
-        changeOrigin: true,
-        secure: false,
-      },
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    define: {
+      "process.env": process.env,
     },
-  },*/
-
-  plugins: [react(), svgr()],
+    build: {
+      outDir: "dist", // Çıktı klasörünün adı
+    },
+    publicDir: "public",
+    optimizeDeps: {
+      include: ["nouislider"],
+    },
+    server: {
+      port: Number(env.VITE_PORT),
+    },
+    plugins: [react(), svgr()],
+  };
 });

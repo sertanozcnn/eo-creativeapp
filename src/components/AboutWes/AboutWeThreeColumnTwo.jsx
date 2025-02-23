@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
+import { FiLoader } from "react-icons/fi";
+import { useGetAboutAdvantageContentTwosQuery } from "../../redux/services/aboutAdvantageContentTwoApi ";
 
-const advantages = [
-  {
-    icon: "/game_plus_product.svg",
-    subtitle: "Stratejik yaklaşım",
-    description:
-      "Her projeye, markanızın hedeflerini anlayarak ve ihtiyaçlarınıza uygun size özel stratejik bir yaklaşım sunarak başlarız.",
-  },
-  {
-    icon: "/click_two.svg",
-    subtitle: "Detaylara özen",
-    description:
-      "Küçük ayrıntılarda büyük farklar yaratarak mükemmelliği hedefleriz. Tüm aşamalarda, işinize katma değer sağlayacak detayları düşünürüz.",
-  },
-  {
-    icon: "/screen_two.svg",
-    subtitle: "Esneklik ve çeviklik",
-    description:
-      "Değişen ihtiyaçlara hızlı uyum sağlayarak en iyi sonuçları sunarız. İş dünyasında çözüm üretme hızımız ve esnekliğimizle fark yaratırız.",
-  },
-];
 const AboutWeThreeColumnTwo = () => {
+  const { data, error, isLoading } = useGetAboutAdvantageContentTwosQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <section>
@@ -45,7 +46,7 @@ const AboutWeThreeColumnTwo = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-8   mx-auto mt-12">
-          {advantages.map((advantage, index) => (
+          {data?.map((advantage, index) => (
             <motion.div
               key={index}
               className="flex flex-col items-start p-5 xl:p-2 "
@@ -59,7 +60,7 @@ const AboutWeThreeColumnTwo = () => {
               </div>
 
               <h4 className="text-xl font-primaryRegular text-black mb-3">
-                {advantage.subtitle}
+                {advantage.title}
               </h4>
               <p className="font-primaryRegular text-black text-sm leading-relaxed">
                 {advantage.description}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
@@ -5,26 +6,11 @@ import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const AnimatedGallery = () => {
+const AnimatedGallery = ({ galleryData }) => {
   const imageColumns = [
-    [
-      "https://i.hizliresim.com/b56ghwx.png",
-      "https://i.hizliresim.com/l2qfnof.jpg",
-      "https://i.hizliresim.com/d589pqi.jpg",
-      "https://i.hizliresim.com/tk8f6mj.jpg",
-    ],
-    [
-      "https://i.hizliresim.com/3u9tqav.jpg",
-      "https://i.hizliresim.com/tupupce.jpg",
-      "https://i.hizliresim.com/amptnxl.jpg",
-      "https://i.hizliresim.com/d0eox64.jpg",
-    ],
-    [
-      "https://i.hizliresim.com/l63t6ov.jpg",
-      "https://i.hizliresim.com/3u9tqav.jpg",
-      "https://i.hizliresim.com/tg83fjn.jpg",
-      "https://i.hizliresim.com/q54tqa2.jpg",
-    ],
+    galleryData.imagesColumn1,
+    galleryData.imagesColumn2,
+    galleryData.imagesColumn3,
   ];
 
   const duplicateSlides = (slides, minSlides = 15) => {
@@ -45,7 +31,6 @@ const AnimatedGallery = () => {
     spaceBetween: 24,
     centeredSlides: true,
     updateOnWindowResize: true,
-    preloadImages: true,
     watchSlidesProgress: true,
     allowTouchMove: false, //el ile kaydırma kapalı
     simulateTouch: false, //el ile kaydırma kapalı
@@ -71,7 +56,7 @@ const AnimatedGallery = () => {
             }}
             speed={13000}
           >
-            {duplicateSlides(images).map((image, imgIndex) => (
+            {duplicateSlides(images || []).map((image, imgIndex) => (
               <SwiperSlide key={imgIndex}>
                 <div className="w-[230px] h-[300px]">
                   <img

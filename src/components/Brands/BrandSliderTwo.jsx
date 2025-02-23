@@ -1,23 +1,30 @@
 import { motion } from "framer-motion";
-
-const topLogos = [
-  { img: "/brand1.svg" },
-  { img: "/brand2.svg" },
-  { img: "/brand3.svg" },
-  { img: "/brand4.svg" },
-  { img: "/brand5.svg" },
-  { img: "/brand6.svg" },
-  { img: "/brand7.svg" },
-  { img: "/brand8.svg" },
-  { img: "/brand9.svg" },
-  { img: "/brand10.svg" },
-  { img: "/brand11.svg" },
-  { img: "/brand12.svg" },
-  { img: "/brand13.svg" },
-  { img: "/brand14.svg" },
-];
+import { FiLoader } from "react-icons/fi";
+import { useGetBrandLogosQuery } from "../../redux/services/brandLogoApi";
 
 const BrandSliderTwo = () => {
+  const { data, error, isLoading } = useGetBrandLogosQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-white text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-white font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
+  const allLogos = data ? [...data.logos, ...data.logos] : [];
+
   return (
     <div className="relative max-w-[94rem]  mt-16 mx-auto  overflow-hidden py-0">
       {/* Gradient overlays - stronger and wider */}
@@ -36,7 +43,7 @@ const BrandSliderTwo = () => {
           ease: "linear",
         }}
       >
-        {[...topLogos, ...topLogos].map((logo, index) => (
+        {allLogos.map((logo, index) => (
           <div
             key={index}
             className="flex items-center justify-center w-[140px] h-[70px] flex-shrink-0"

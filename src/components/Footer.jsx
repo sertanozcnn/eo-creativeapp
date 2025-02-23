@@ -1,11 +1,33 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useGetSocialLinksQuery } from "../redux/services/socialLinkApi";
+import { FiLoader } from "react-icons/fi";
 
 const Footer = () => {
+  const { data: socialLinks, isLoading, error } = useGetSocialLinksQuery();
+
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <footer className="py-3 px-4 md:px-8 lg:px-12">
@@ -87,24 +109,18 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4 md:w-1/2 lg:min-w-40 md:flex md:flex-col md:items-center lg:items-start lg:ml-36">
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
-              FACEBOOK
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm cursor-pointer">
-              INSTAGRAM
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm cursor-pointer">
-              LINKEDIN
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm cursor-pointer">
-              YOUTUBE
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
-              BEHANCE
-            </p>
-            <p className="font-primaryRegular text-black uppercase text-sm  cursor-pointer">
-              TWITTER
-            </p>
+            {socialLinks.map((item) => {
+              return (
+                <a
+                  key={item._id}
+                  href={item.link}
+                  className="font-primaryRegular text-black uppercase text-sm cursor-pointer"
+                >
+                  {item.name}
+                </a>
+              );
+            })}
+
             <Link
               to="/sartlar-kosullar"
               className="font-primaryRegular text-black uppercase text-sm translate-y-10 md:translate-y-16 lg:translate-y-8 cursor-pointer"

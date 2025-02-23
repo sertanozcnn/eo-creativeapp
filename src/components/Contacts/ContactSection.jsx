@@ -4,21 +4,10 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 import { motion } from "framer-motion";
 /*import noUiSlider from "nouislider";*/
 import "nouislider/dist/nouislider.css";
-
-const brands = [
-  { img: "/c_brand1.svg" }, //monday
-  { img: "/c_brand2.svg" }, //discord
-  { img: "/c_brand3.svg" }, //upwork
-  { img: "/c_brand4.svg" }, //vice
-  { img: "/c_brand5.svg" }, //dropboxc
-  { img: "/c_brand6.svg" }, //philips
-  { img: "/c_brand7.svg" }, //ted
-  { img: "/c_brand8.svg" }, //ncr
-  { img: "/c_brand9.svg" }, //abm
-  { img: "/c_brand10.svg" }, //abm
-  { img: "/c_brand11.svg" }, //ıdeo
-  { img: "/c_brand12.svg" }, //abm
-];
+import { useGetBrandContactsQuery } from "../../redux/services/brandContactApi";
+import { FiLoader } from "react-icons/fi";
+import toast from "react-hot-toast";
+import { useCreateContactRequestMutation } from "../../redux/services/contactRequestCreateApi";
 
 const services = [
   { id: "branding", label: "MARKALAŞMA" },
@@ -40,16 +29,62 @@ const timeframes = [
 ];
 
 const ContactSection = () => {
-  const [contactMethod, setContactMethod] = useState("email");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [selectedServices, setSelectedServices] = useState([]);
   const [timeframe, setTimeframe] = useState("");
-  const [minBudget, setMinBudget] = useState("500");
+  const [minBudget, setMinBudget] = useState("1.000");
   const [maxBudget, setMaxBudget] = useState("60.000");
+  const [contactMethod, setContactMethod] = useState("email");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [createContactRequest] = useCreateContactRequestMutation();
+
   const contactMethods = [
     { id: "email", label: "E-posta" },
     { id: "phone", label: "Telefon" },
     { id: "sms", label: "SMS" },
   ];
+
+  const { data, error, isLoading } = useGetBrandContactsQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
+  const validateForm = () => {
+    if (!name || !surname || !email || !phone) {
+      toast.error("Lütfen tüm gerekli alanları doldurun!");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Geçerli bir e-posta adresi girin!");
+      return false;
+    }
+    if (phone.replace(/\D/g, "").length < 10) {
+      toast.error("Geçerli bir telefon numarası girin!");
+      return false;
+    }
+    return true;
+  };
 
   const handleServiceToggle = (serviceId) => {
     setSelectedServices((prev) =>
@@ -70,6 +105,51 @@ const ContactSection = () => {
     const formatted = Number(formattedValue).toLocaleString("tr-TR");
     setter(formatted);
   };
+
+  const handleSubmit = async () => {
+    if (!validateForm()) return;
+    setIsSubmitting(true);
+
+    const requestData = {
+      name,
+      surname,
+      email,
+      phone,
+      companyName: companyName.trim() === "" ? null : companyName,
+      selectedServices: selectedServices.map(
+        (id) => services.find((s) => s.id === id)?.label
+      ),
+      timeframe: timeframes.find((t) => t.id === timeframe)?.label,
+      minBudget: Number(minBudget.replace(/[\D]/g, "")),
+      maxBudget: Number(maxBudget.replace(/[\D]/g, "")),
+      contactMethod: contactMethods.find((c) => c.id === contactMethod)?.label,
+    };
+
+    try {
+      await createContactRequest(requestData).unwrap();
+      toast.success("Talebiniz başarıyla gönderildi!", {
+        position: "bottom-right",
+      });
+      setName("");
+      setSurname("");
+      setEmail("");
+      setPhone("");
+      setCompanyName("");
+      setSelectedServices([]);
+      setTimeframe("");
+      setMinBudget("1.000");
+      setMaxBudget("60.000");
+      setContactMethod("email");
+    } catch (error) {
+      toast.error("Bir hata oluştu, lütfen tekrar deneyin.", {
+        position: "bottom-right",
+      });
+      console.log = function () {};
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   //container max-w-[85rem] mx-auto py-16 px-4 flex flex-col md:flex-row items-center gap-28
   return (
     <div className="container max-w-[85rem] mx-auto px-4 xl:px-2  py-24">
@@ -86,10 +166,10 @@ const ContactSection = () => {
           </p>
 
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-8">
-            {brands.map((brand, index) => (
+            {data?.map((brand, index) => (
               <div key={index} className="flex items-center justify-left">
                 <img
-                  src={brand.img}
+                  src={brand.imageUrl}
                   alt={`Brand ${index + 1}`}
                   className="h-5 w-auto mt-3"
                 />
@@ -104,7 +184,8 @@ const ContactSection = () => {
             <div className="relative">
               <input
                 type="text"
-                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
                 placeholder="Adınızı girin"
               />
@@ -118,12 +199,13 @@ const ContactSection = () => {
             <div className="relative">
               <input
                 type="text"
-                id="name"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
                 className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
                 placeholder="Soyadınızı girin"
               />
               <label
-                htmlFor="name"
+                htmlFor="surname"
                 className="absolute left-4 top-2 text-sm font-primaryMedium text-black"
               >
                 Soyad
@@ -135,11 +217,13 @@ const ContactSection = () => {
             <div className="relative">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
                 placeholder="E-postanızı girin"
               />
               <label
-                htmlFor="name"
+                htmlFor="email"
                 className="absolute left-4 top-2 text-sm font-primaryMedium text-black"
               >
                 E-posta
@@ -149,11 +233,18 @@ const ContactSection = () => {
             <div className="relative">
               <input
                 type="text"
+                value={phone}
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/\D/g, ""); // Sadece sayılar
+                  if (numericValue.length <= 11) {
+                    setPhone(numericValue);
+                  }
+                }}
                 className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
                 placeholder="+90 | XXX XXX XXXX"
               />
               <label
-                htmlFor="name"
+                htmlFor="phone"
                 className="absolute left-4 top-2 text-sm font-primaryMedium text-black"
               >
                 Telefon numarası
@@ -191,12 +282,13 @@ const ContactSection = () => {
           <div className="relative">
             <input
               type="text"
-              id="name"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
               className="w-full px-4 pt-8 pb-2 rounded-lg  font-primaryRegular text-bgContactInputTextColor text-sm bg-bgHeaderButtonPrimary"
               placeholder="Şirket adınızı yazın"
             />
             <label
-              htmlFor="name"
+              htmlFor="companyName"
               className="absolute left-4 top-2 text-sm font-primaryMedium text-black"
             >
               Şirket Adı
@@ -251,8 +343,8 @@ const ContactSection = () => {
               Bu proje için bütçeniz ne kadar?
             </label>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 pt-2">
-              <div className="w-full md:max-w-[200px]">
-                <div className="relative flex items-center border border-black rounded-full px-4 py-2">
+              <div className="w-full md:max-w-[180px]">
+                <div className="relative flex items-center border border-black rounded-full px-4 py-1">
                   <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
                     min:
                   </span>
@@ -262,15 +354,15 @@ const ContactSection = () => {
                     onChange={(e) =>
                       handleBudgetChange(e.target.value, setMinBudget)
                     }
-                    className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
+                    className="w-32 bg-transparent font-primaryRegular text-lg outline-none"
                   />
-                  <span className="font-primaryRegular text-xl ml-40 md:ml-5">
+                  <span className="font-primaryRegular text-base ml-40 md:ml-2">
                     TL
                   </span>
                 </div>
               </div>
-              <div className="w-full md:max-w-[200px]">
-                <div className="relative flex items-center border border-black rounded-full px-4 py-2">
+              <div className="w-full md:max-w-[180px]">
+                <div className="relative flex items-center border border-black rounded-full px-4 py-1">
                   <span className="absolute -top-2.5 left-4 bg-white px-1 text-xs font-primaryMedium">
                     max:
                   </span>
@@ -280,9 +372,9 @@ const ContactSection = () => {
                     onChange={(e) =>
                       handleBudgetChange(e.target.value, setMaxBudget)
                     }
-                    className="w-32 bg-transparent font-primaryRegular text-xl outline-none"
+                    className="w-32 bg-transparent font-primaryRegular text-lg outline-none"
                   />
-                  <span className="font-primaryRegular text-xl ml-40 md:ml-5">
+                  <span className="font-primaryRegular text-base ml-40 md:ml-2">
                     TL
                   </span>
                 </div>
@@ -292,11 +384,15 @@ const ContactSection = () => {
 
           <div className="flex justify-end">
             <motion.button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
               className="flex items-center space-x-2 bg-black text-white text-sm font-primarySemiBold py-3 px-3 rounded-lg  transition-colors duration-500 ease-in-out justify-center xl:justify-start mx-auto xl:mx-0"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span>HAYDİ BAŞLAYALIM</span>
+              <span>
+                {isSubmitting ? "GÖNDERİLİYOR..." : "HAYDİ BAŞLAYALIM"}
+              </span>
               <PiArrowUpRightBold size={18} />
             </motion.button>
           </div>

@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { PiArrowUpRightBold } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const NeedSection = () => {
+  const navigate = useNavigate();
+
   const cards = [
     {
       icon: <img src="/book_need.svg" className="w-12 h-12" />,
@@ -9,6 +12,7 @@ const NeedSection = () => {
       description:
         "Trendler ve ipuçları için blog sayfamızı inceleyebilirsiniz.",
       buttonText: "Devamını Oku",
+      link: "/blog",
     },
     {
       icon: <img src="/heart_need.svg" className="w-12 h-12 " />,
@@ -16,6 +20,7 @@ const NeedSection = () => {
       description:
         "Dilediğiniz konuda bilgi almak için iletişim sayfamızı ziyaret edin.",
       buttonText: "Devamını Oku",
+      link: "/iletisim",
     },
   ];
 
@@ -45,7 +50,10 @@ const NeedSection = () => {
                 {card.description}
               </p>
 
-              <button className="flex items-center space-x-2 text-black font-primarySemiBold mt-5 ">
+              <button
+                className="flex items-center space-x-2 text-black font-primarySemiBold mt-5 "
+                onClick={() => navigate(card.link)}
+              >
                 <span>{card.buttonText}</span>
                 <motion.div
                   className="w-5 h-5"

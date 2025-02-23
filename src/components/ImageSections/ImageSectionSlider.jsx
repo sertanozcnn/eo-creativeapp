@@ -1,36 +1,38 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Mousewheel, Autoplay } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
+import { useGetImageSectionsQuery } from "../../redux/services/imageSectionApi";
+import { FiLoader } from "react-icons/fi";
 
 const ImageSectionSlider = () => {
-  const images = [
-    {
-      title: "Ürün Tasarımı",
-      tags: ["TASARIM", "MOCKUP", "ÜRÜN"],
-      image: "https://i.hizliresim.com/qyjerrx.png",
-    },
-    {
-      title: "Markalaşma",
-      tags: ["PROJE GELİŞTİRME", "MARKA GELİŞTİRME", "YENİDEN MARKALAŞMA"],
-      image: "https://i.hizliresim.com/56kl4dr.jpg",
-    },
-    {
-      title: "Sosyal Medya",
-      tags: ["KONSEPT TASARIM", "MEDYA", "İŞ BİRLİĞİ", "INFLUENCER"],
-      image: "https://i.hizliresim.com/4p7xrvd.jpg",
-    },
-    {
-      title: "E-Posta Tasarımı",
-      tags: ["HABER BÜLTENİ", "ŞABLONLAR", "HTML5"],
-      image: "https://i.hizliresim.com/6ycwupj.jpg",
-    },
-  ];
+  const { data, error, isLoading } = useGetImageSectionsQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
 
   // Daha akıcı kaydırma için daha fazla resim ekle
-  const extendedImages = [...images, ...images, ...images, ...images];
+  const extendedImages = [
+    ...(data?.imageSections || []),
+    ...(data?.imageSections || []),
+    ...(data?.imageSections || []),
+  ];
 
   return (
     <div className="relative w-full image-section mt-20">
@@ -41,7 +43,7 @@ const ImageSectionSlider = () => {
         freeMode={true}
         mousewheel={{ forceToAxis: true, sensitivity: 0.4 }}
         grabCursor={true}
-        loopAdditionalSlides={10}
+        loopAdditionalSlides={data?.imageSections?.length || 5}
         speed={12900} // Daha düşük hız kasılmayı azaltır
         loop={true}
         autoplay={{

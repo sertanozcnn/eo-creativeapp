@@ -20,8 +20,8 @@ const CommentSection = ({ currentIndex, testimonials }) => {
   const translateX = isMobile ? currentIndex * 100 : currentIndex * 33.333;
 
   return (
-    <div className="max-w-[12 0%] -ml-[6%] overflow-hidden">
-      <div className="max-w-8xl xl:ml-[18%] mx-auto px-4">
+    <div className="max-w-[120%] -ml-[6%] overflow-hidden">
+      <div className="max-w-8xl ipad:ml-[4%] laptop:ml-[10%] desktop:ml-[18%] mx-auto px-4">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${translateX}%)` }}
@@ -34,9 +34,10 @@ const CommentSection = ({ currentIndex, testimonials }) => {
               } flex-shrink-0 px-4`}
             >
               <div className="h-full ">
-                <p className="text-base text-black font-primaryRegular leading-relaxed mb-8">
-                  {testimonial.text}
-                </p>
+                <p
+                  className="text-base text-black font-primaryRegular leading-relaxed mb-8"
+                  dangerouslySetInnerHTML={{ __html: testimonial.text }}
+                ></p>
                 <div className="flex items-center mt-auto">
                   <img
                     src={testimonial.image}

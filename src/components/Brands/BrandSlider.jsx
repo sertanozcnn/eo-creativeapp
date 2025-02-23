@@ -1,26 +1,33 @@
 import { motion } from "framer-motion";
-
-const topLogos = [
-  { img: "/brand1.svg" },
-  { img: "/brand2.svg" },
-  { img: "/brand3.svg" },
-  { img: "/brand4.svg" },
-  { img: "/brand5.svg" },
-  { img: "/brand6.svg" },
-  { img: "/brand7.svg" },
-];
-
-const bottomLogos = [
-  { img: "/brand8.svg" },
-  { img: "/brand9.svg" },
-  { img: "/brand10.svg" },
-  { img: "/brand11.svg" },
-  { img: "/brand12.svg" },
-  { img: "/brand13.svg" },
-  { img: "/brand14.svg" },
-];
+import { useGetBrandLogosQuery } from "../../redux/services/brandLogoApi";
+import { FiLoader } from "react-icons/fi";
 
 const BrandSlider = () => {
+  const { data, error, isLoading } = useGetBrandLogosQuery();
+
+  const topLogos = data ? data.logos.filter((logo) => logo.type == "top") : [];
+  const bottomLogos = data
+    ? data.logos.filter((logo) => logo.type == "bottom")
+    : [];
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full overflow-hidden py-24">
       {/* Gradient overlays - stronger and wider */}

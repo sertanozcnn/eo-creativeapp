@@ -1,54 +1,31 @@
 import { motion } from "framer-motion";
-
-const advantages = [
-  {
-    icon: "/advantages_star.svg",
-    title: "SİZE ÖZEL",
-    subtitle: "Şirket içi yaratıcılığınızı artırın",
-    description:
-      "Tasarım işlerini biz hallediyoruz, böylece siz ekibe ek yük getirmeden stratejik ve etkili çalışmalara odaklanabiliyorsunuz.",
-  },
-  {
-    icon: "/advantages_esnek.svg",
-    title: "ESNEK",
-    subtitle: "İhtiyacınıza uygun ödeyin",
-    description:
-      "İster abonelik modellerinden birini seçin isterseniz de proje tabanlı seçeneğimizi tercih edin. Kendi ihtiyaçlarınıza göre ödeme yöntemini belirleyin.",
-  },
-  {
-    icon: "/advantages_rocket.svg",
-    title: "7 / 24",
-    subtitle: "Hız uğruna kaliteyi feda etmeyin",
-    description:
-      "İşinize dedike ekibimiz sayesinde iş sonuçlarınıza kaliteden ödün vermeden hızlı bir şekilde ulaşın. Üstelik sınırsız revizyon imkanıyla!",
-  },
-  {
-    icon: "/advantages_money.svg",
-    title: "EKONOMİK",
-    subtitle: "Maliyetlerinizi optimize edin",
-    description:
-      "Dış kaynaklı tasarım hizmetleriyle, tam zamanlı bir ekip çalıştırmanın getirdiği maliyetlerden tasarruf edin ve bütçenizi daha etkili kullanın.",
-  },
-  {
-    icon: "/advantages_person.svg",
-    title: "ŞEFFAF",
-    subtitle: "Sürprizlere yer yok",
-    description:
-      "Süreç ve maliyetler tamamen şeffaftır. Her şey baştan planlanır, sonradan ortaya çıkan masraflarla karşılaşmazsınız.",
-  },
-  {
-    icon: "/advantages_security.svg",
-    title: "GÜVENİLİR",
-    subtitle: "Zamanında ve sorunsuz teslimat",
-    description:
-      "Tüm projelerimizi söz verdiğimiz tarihlerde ve beklentilerinizi aşan bir kaliteyle teslim ediyoruz. Güvenilir bir iş ortağı olarak yanınızdayız.",
-  },
-];
+import { useGetAdvantageContentsQuery } from "../../redux/services/advantageContentApi,";
+import { FiLoader } from "react-icons/fi";
 
 const AdvantageContent = () => {
+  const { data, error, isLoading } = useGetAdvantageContentsQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  max-w-[86rem] mx-auto mt-12">
-      {advantages.map((advantage, index) => (
+      {data?.map((advantage, index) => (
         <motion.div
           key={index}
           className="flex flex-col items-start p-6 "

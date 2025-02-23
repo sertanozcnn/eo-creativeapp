@@ -1,42 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
-
-const questions = [
-  {
-    id: 1,
-    question: "Hangi hizmetleri sunuyorsunuz?",
-    answer:
-      "Web tasarım1, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 2,
-    question: "Gerçekten sınırsız revizyon hakkı var mı?",
-    answer:
-      "Web tasarım2, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 3,
-    question: "Sadece büyük işletmelere mi hizmet veriyorsunuz?",
-    answer:
-      "Web tasarım3, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 4,
-    question: "Çalışma saatleriniz nedir?",
-    answer:
-      "Web tasarım4, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 5,
-    question: "İş sonuçlarını beğenmezsem ne olur?",
-    answer:
-      "Web tasarım5, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-];
+import { useGetQuestionSectionOnesQuery } from "../../redux/services/questionSectionOneApi";
+import { FiLoader } from "react-icons/fi";
 
 const QuestionSection = () => {
-  const [openQuestion, setOpenQuestion] = useState(1); // İlk soru açık başlasın
+  const [openQuestion, setOpenQuestion] = useState(null);
+
+  const { data, error, isLoading } = useGetQuestionSectionOnesQuery();
+  useEffect(() => {
+    if (data?.length > 0) {
+      setOpenQuestion(data[0]._id);
+    }
+  }, [data]);
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
 
   const toggleQuestion = (id) => {
     setOpenQuestion(openQuestion === id ? null : id);
@@ -48,7 +41,7 @@ const QuestionSection = () => {
         {/* Title Section */}
         <div
           className={`md:w-1/3 ${
-            openQuestion ? "h-auto md:h-[32rem]" : "h-auto md:h-[26rem]"
+            openQuestion ? "h-auto md:h-[31rem]" : "h-auto md:h-[26rem]"
           }`}
         >
           <div className="relative md:sticky md:top-28">
@@ -63,19 +56,19 @@ const QuestionSection = () => {
         {/* Questions Section */}
         <div className="md:w-2/3">
           <div className="space-y-4">
-            {questions.map((q) => (
+            {data?.map((q) => (
               <div
-                key={q.id}
+                key={q._id}
                 className="rounded-xl overflow-hidden duration-500"
               >
                 <button
                   className={`w-full text-left p-6 flex items-center hover:bg-bgQuestionBackgroundColor transition-colors ${
-                    openQuestion === q.id ? "bg-bgQuestionBackgroundColor" : ""
+                    openQuestion === q._id ? "bg-bgQuestionBackgroundColor" : ""
                   }`}
-                  onClick={() => toggleQuestion(q.id)}
-                  aria-expanded={openQuestion === q.id}
+                  onClick={() => toggleQuestion(q._id)}
+                  aria-expanded={openQuestion === q._id}
                 >
-                  {openQuestion === q.id ? (
+                  {openQuestion === q._id ? (
                     <ChevronUp className="w-6 h-6 text-black flex-shrink-0 mr-3" />
                   ) : (
                     <ChevronDown className="w-6 h-6 text-black flex-shrink-0 mr-3" />
@@ -87,7 +80,7 @@ const QuestionSection = () => {
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={
-                    openQuestion === q.id
+                    openQuestion === q._id
                       ? { height: "auto", opacity: 1 }
                       : { height: 0, opacity: 0 }
                   }

@@ -1,36 +1,31 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
-
-const questions = [
-  {
-    id: 1,
-    question: "Proje hakkında nasıl iletişim kurabiliriz?",
-    answer:
-      "Web tasarım, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 2,
-    question: "Bir proje ne kadar süre içinde tamamlanır ve teslim edilir?",
-    answer:
-      "Web tasarım, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 3,
-    question: "Proje süreçlerinde onay mekanizması var mı?",
-    answer:
-      "Web tasarım, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-  {
-    id: 4,
-    question: "Proje tesliminden sonra destek sağlıyor musunuz?",
-    answer:
-      "Web tasarım, grafik tasarım, UI/UX tasarımı, illüstrasyon, 3D tasarım ve logo tasarımı gibi çeşitli yaratıcı hizmetler sunuyoruz. İhtiyacınıza uygun, modern ve profesyonel çözümlerle yanınızdayız.",
-  },
-];
+import { FiLoader } from "react-icons/fi";
+import { useGetQuestionSectionTwosQuery } from "../../redux/services/questionSectionTwoApi";
 
 const QuestionSectionTwo = () => {
   const [openQuestion, setOpenQuestion] = useState(null);
+
+  const { data, error, isLoading } = useGetQuestionSectionTwosQuery();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <FiLoader className="animate-spin text-bgHeaderColorMenu text-4xl" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="text-black font-primaryMedium">
+          Tekrar Deneyiniz {error.message}
+        </div>
+      </div>
+    );
+  }
 
   const toggleQuestion = (id) => {
     setOpenQuestion(openQuestion === id ? null : id);
@@ -57,19 +52,19 @@ const QuestionSectionTwo = () => {
         {/* Questions Section */}
         <div className="md:w-2/3">
           <div className="space-y-4">
-            {questions.map((q) => (
+            {data?.map((q) => (
               <div
-                key={q.id}
+                key={q._id}
                 className="rounded-xl overflow-hidden duration-500"
               >
                 <button
                   className={`w-full text-left p-6 flex items-center hover:bg-gray-50 transition-colors  ${
-                    openQuestion == q.id ? "bg-bgQuestionBackgroundColor" : ""
+                    openQuestion == q._id ? "bg-bgQuestionBackgroundColor" : ""
                   }`}
-                  onClick={() => toggleQuestion(q.id)}
-                  aria-expanded={openQuestion === q.id}
+                  onClick={() => toggleQuestion(q._id)}
+                  aria-expanded={openQuestion === q._id}
                 >
-                  {openQuestion === q.id ? (
+                  {openQuestion === q._id ? (
                     <ChevronUp className="w-6 h-6 text-black flex-shrink-0 mr-3" />
                   ) : (
                     <ChevronDown className="w-6 h-6 text-black flex-shrink-0 mr-3" />
@@ -81,7 +76,7 @@ const QuestionSectionTwo = () => {
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={
-                    openQuestion === q.id
+                    openQuestion === q._id
                       ? { height: "auto", opacity: 1 }
                       : { height: 0, opacity: 0 }
                   }
